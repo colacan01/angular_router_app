@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular_router_app';
+  title = '내비게이션(라우터사용)';
 }

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light mb-3">
+    <div class="container">
+        <a class="navbar-brand fw-bolder" [routerLink]="['/']"style="margin-right: 4rem;">(주)동협스포츠</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-sm-inline-flex">
+            <ul class="navbar-nav flex-grow-1 justify-content-start">
+                <li *ngFor="let category of categories" class="nav-item {{category.clss}}" style="margin-right: 2rem;">
+                    <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.name}}</a>
+                    <ul class="dropdown-menu" *ngIf="category.subcategories">
+                        <li *ngFor="let subcategory of category.subcategories">
+                            <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.id]">
+                                <i class="bi {{subcategory.icon_clss}} me-4" *ngIf="subcategory.icon_clss" ></i>{{subcategory.name}}
+                            </a>
+                        </li>                        
+                    </ul>   
+
+                    <a class="nav-link text-dark" [routerLink]="[category.target_url]" *ngIf="!category.subcategories">{{category.name}}</a>
+                </li>                            
+            </ul>
+        </div>
+
+    </div>  
+</nav>
