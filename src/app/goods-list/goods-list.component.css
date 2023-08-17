@@ -1,0 +1,5 @@
+.category_banner {
+    overflow: hidden; 
+    height: 18rem;
+    object-fit: cover;
+}

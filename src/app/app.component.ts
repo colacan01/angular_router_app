@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { FooterMapComponent } from './footer-map/footer-map.component';
 
 @Component({
   selector: 'app-root',

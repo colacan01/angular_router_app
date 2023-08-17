@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Good } from './common_interface';
+import { Category, Good } from './common_interface';
 
 @Injectable({
   providedIn: 'root'
@@ -69,9 +69,77 @@ export class GoodsServiceService {
       price: 600000,
       rep_image: "../../assets/images/flower02.jpg"
     },
+    {
+      category_id: "hyb",
+      id: "1",
+      name: "스캇 서브크로스 10",
+      price: 900000,
+      rep_image: "../../assets/images/flower01.jpg"
+    },
+    {
+      category_id: "hyb",
+      id: "2",
+      name: "스캇 서브크로스 20",
+      price: 600000,
+      rep_image: "../../assets/images/flower02.jpg"
+    },
+    {
+      category_id: "kid",
+      id: "1",
+      name: "스캇 ROXTER 16",
+      price: 900000,
+      rep_image: "../../assets/images/flower01.jpg"
+    },
+    {
+      category_id: "kid",
+      id: "2",
+      name: "스캇 ROXTER WALKER",
+      price: 600000,
+      rep_image: "../../assets/images/flower02.jpg"
+    },
+    {
+      category_id: "kid",
+      id: "3",
+      name: "스캇 SCALE 24 DISK",
+      price: 900000,
+      rep_image: "../../assets/images/flower01.jpg"
+    },
+    {
+      category_id: "kid",
+      id: "4",
+      name: "스캇 SCALE 24",
+      price: 600000,
+      rep_image: "../../assets/images/flower02.jpg"
+    },
   ];
 
+  Categories: Category[] = [
+    {
+      id: "road",
+      name: "로드",
+      banner_img: "../../assets/images/banner_road.jpg"
+    },
+    {
+      id: "mtb",
+      name: "엠티비",
+      banner_img: "../../assets/images/banner_mtb.jpg"
+    },
+    {
+      id: "hyb",
+      name: "하이브리드",
+      banner_img: "../../assets/images/banner_hyb.jpg"
+    },
+    {
+      id: "kid",
+      name: "아동",
+      banner_img: "../../assets/images/banner_kid.jpg"
+    }
+  ]
   constructor() { }
+
+  getCategory(category_id: string): Category | undefined {
+    return this.Categories.find( a => a.id === category_id);
+  }
 
   getGoodsByCategory(category_id: string): Good[] {
     return this.Goods.filter( a => a.category_id === category_id);

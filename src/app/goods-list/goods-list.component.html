@@ -1,7 +1,22 @@
-<p>{{categoryId}} goods-list works!</p>
+<section id="main-nav">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">자전거</a></li>
+                <li class="breadcrumb-item active" aria-current="page">로드</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section id="banner" *ngIf="category?.banner_img">
+    <div class="container mb-4">
+        <img class="category_banner w-100" src="{{category?.banner_img}}">
+    </div>
+</section>
 <main>
     <div class="container">
-        <div id="goods" class="row row-cols-4 g-4">
+        <div id="goods" class="row row-cols-4 g-4 mb-3">
             <div class="col" *ngFor="let Good of Goods">
                 <app-goods-card [good]="Good"></app-goods-card>
             </div>

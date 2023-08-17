@@ -12,6 +12,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { CartComponent } from './user/cart/cart.component';
 import { GoodsCardComponent } from './goods-list/goods-card/goods-card.component';
+import { FooterMapComponent } from './footer-map/footer-map.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GoodsCardComponent } from './goods-list/goods-card/goods-card.component
     LoginComponent,
     RegisterComponent,
     CartComponent,
-    GoodsCardComponent
+    GoodsCardComponent,
+    FooterMapComponent
   ],
   imports: [
     BrowserModule,
