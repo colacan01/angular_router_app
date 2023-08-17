@@ -1,0 +1,14 @@
+.goods-card-img-crop-center {
+    overflow: hidden; 
+    height: 18rem;
+}
+
+.goods-card-link-no-deco {
+    text-decoration: none;
+}
+
+.goods-card-comp-logo {
+    width: 12px;
+    height: 16.8px;
+    vertical-align: middle;
+}

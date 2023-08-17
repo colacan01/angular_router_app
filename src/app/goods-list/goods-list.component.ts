@@ -1,7 +1,8 @@
-import { Component, inject, OnInit  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GoodsServiceService } from '../goods-service.service';
-import { Good } from '../common_interface';
+import { Component, inject, OnInit  }           from '@angular/core';
+import { ActivatedRoute }                       from '@angular/router';
+import { GoodsServiceService }                  from '../goods-service.service';
+import { Good }                                 from '../common_interface';
+import { GoodsCardComponent }                   from './goods-card/goods-card.component';
 
 @Component({
   selector: 'app-goods-list',
