@@ -7,6 +7,10 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { ContentsListComponent } from './contents-list/contents-list.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
 import { MainIntroComponent } from './main-intro/main-intro.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { CartComponent } from './user/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { MainIntroComponent } from './main-intro/main-intro.component';
     TopNavComponent,
     ContentsListComponent,
     GoodsListComponent,
-    MainIntroComponent
+    MainIntroComponent,
+    UserComponent,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

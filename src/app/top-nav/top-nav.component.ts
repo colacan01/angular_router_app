@@ -47,19 +47,22 @@ export class TopNavComponent {
       clss: "dropdown",
       subcategories: [
         {
-          id: "1",
+          id: "login",
           name: "로그인",
-          icon_clss: "bi-box-arrow-in-right"
+          icon_clss: "bi-box-arrow-in-right",
+          target_url: "user"
         },
         {
-          id: "2",
+          id: "register",
           name: "사용자등록",
-          icon_clss: "bi-person-plus"
+          icon_clss: "bi-person-plus",
+          target_url: "user"
         },
         {
-          id: "3",
+          id: "cart",
           name: "장바구니",
-          icon_clss: "bi-cart4"
+          icon_clss: "bi-cart4",
+          target_url: "user"
         },
       ]
     },

@@ -1,2 +1,22 @@
 <p>{{categoryId}} goods-list works!</p>
-<p *ngFor="let Good of Goods">{{Good.name}}</p>
+<main>
+    <div class="container">
+        <div id="goods" class="row row-cols-4 g-4">
+            <div class="col" *ngFor="let Good of Goods">
+                <div class="card h-100" style="border-style: none;box-shadow: 1px 2px 10px rgb(215,217,220);">
+                    <div class="card-header" style="background: var(--bs-body-bg);border-style: none;">
+                        <h6>SCOTT</h6>
+                    </div><img class="card-img w-100 d-block" src={{Good.rep_image}} />
+                    <div class="card-body">
+                        <h4 class="card-title">{{Good.name}}</h4>
+                        <h6 class="text-muted card-subtitle mb-2">{{Good.price}}</h6>
+                        <a id="link_good_detail" class="card-link" href="#">상세보기</a>
+                        <a id="link_purchase" class="card-link" href="#">구매</a>
+                        <a id="link_like" class="card-link" href="#">좋아요</a>
+                        <a id="link_share" class="card-link" href="#">공유하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
