@@ -13,6 +13,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { CartComponent } from './user/cart/cart.component';
 import { GoodsCardComponent } from './goods-list/goods-card/goods-card.component';
 import { FooterMapComponent } from './footer-map/footer-map.component';
+import { OrdersComponent } from './user/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterMapComponent } from './footer-map/footer-map.component';
     RegisterComponent,
     CartComponent,
     GoodsCardComponent,
-    FooterMapComponent
+    FooterMapComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
