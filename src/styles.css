@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+
+html, body { 
+  height: 100%;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
+body { margin: 0; }
+main {
+    min-height: calc(100% - 172px);;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  
+  footer {
+    height: 100px;
+    position: relative;
+    /* transform: translateY(-100%); */
+    /* bottom: 0; */
+    background: var(--bs-body-color);
+    color: var(--bs-secondary-bg);
+    padding-top: 10px;
+  }
+  
+  footer .container {
+    height: 100%;
+  }

@@ -12,3 +12,102 @@
     height: 16.8px;
     vertical-align: middle;
 }
+
+.card_img_fixed_height {
+    height: 210px;
+    overflow: hidden;
+  }
+  
+  .card_img_middle {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-img-top-fit {
+    height: 78%;
+    object-fit: cover;
+  }
+  
+  .prod_name {
+    height: 3.7rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .good_item_brand {
+    font-size: .65rem!important;
+    color: var(--bs-light-text-emphasis);
+    font-weight: 300;
+  }
+  
+  .good_item_disc_per {
+    color: rgb(239,116,175);
+    font-weight: bold;
+    font-size: 0.75rem;
+  }
+  
+  .good_item_price {
+    font-size: 0.75rem;
+  }
+  
+  .new_prod {
+    font-size: 0.5rem;
+    background: var(--bs-danger);
+    color: var(--bs-body-bg);
+    padding: 0.2rem;
+    text-align: center;
+    min-width: 34px;
+  }
+  
+  .sold_out {
+    font-size: 0.5rem;
+    background: var(--bs-light-text-emphasis);
+    color: var(--bs-body-bg);
+    padding: 0.2rem;
+    text-align: center;
+    min-width: 34px;
+  }
+  
+  .sale_discount {
+    font-size: 0.5rem;
+    background: rgb(239,116,175);
+    color: var(--bs-body-bg);
+    padding: 0.2rem;
+    text-align: center;
+    min-width: 34px;
+  }
+  
+  .free_card {
+    font-size: 0.5rem;
+    background: #04b420;
+    color: var(--bs-body-bg);
+    padding: 0.2rem;
+    text-align: center;
+    min-width: 34px;
+  }
+  
+  .in_stock {
+    font-size: 0.5rem;
+    background: #2b84eb;
+    color: var(--bs-body-bg);
+    padding: 0.2rem;
+    text-align: center;
+    min-width: 34px;
+  }
+  
+  .good_item_ori_price {
+    text-align: right;
+    text-decoration: line-through;
+    color: var(--bs-gray-400);
+    font-size: .65rem;
+    margin-bottom: 0px;
+  }
+  
+  .badge_my {
+    font-size: .55rem;
+    font-weight: 200;
+    vertical-align: middle;
+    background: rgb(15,104,122);
+  }

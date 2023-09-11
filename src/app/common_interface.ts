@@ -19,8 +19,16 @@ export interface Good {
     category_id: string;
     id: string;
     name: string;
+    brand?: string;
     rep_image?: string;
     thumb_images?: string;
+    my?: string;
+    ori_price?: number;
     price: number;
+    discount_per?: number;
     size?: string;
+    is_new_prod?: string;
+    is_in_stock?: string;
+    is_sale_discount?: string;
+    is_sold_out?: string;
 }
