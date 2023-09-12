@@ -8,21 +8,21 @@ html, body {
 }
 body { margin: 0; }
 main {
-    min-height: calc(100% - 172px);;
+    min-height: calc(100% - 359px);;
     padding-bottom: 10px;
     position: relative;
   }
   
-  footer {
-    height: 100px;
-    position: relative;
-    /* transform: translateY(-100%); */
-    /* bottom: 0; */
-    background: var(--bs-body-color);
-    color: var(--bs-secondary-bg);
-    padding-top: 10px;
-  }
-  
-  footer .container {
-    height: 100%;
-  }
+footer {
+  /* height: 100px; */
+  position: relative;
+  /* transform: translateY(-100%); */
+  /* bottom: 0; */
+  background: var(--bs-body-color);
+  color: var(--bs-secondary-bg);
+  padding-top: 10px;
+}
+
+footer .container {
+  height: 100%;
+}

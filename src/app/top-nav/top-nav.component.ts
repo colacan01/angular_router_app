@@ -38,11 +38,65 @@ export class TopNavComponent {
     },
     {
       id: "2",
+      name: "부품",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "drive",
+          name: "구동계",
+          target_url: "goods_list"
+        },
+        {
+          id: "brake",
+          name: "브레이크",
+          target_url: "goods_list"
+        },
+        {
+          id: "stier",
+          name: "조향부",
+          target_url: "goods_list"
+        },
+        {
+          id: "part_etc",
+          name: "기타",
+          target_url: "goods_list"
+        }
+      ]
+    },
+    {
+      id: "3",
+      name: "용품",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "tire",
+          name: "타이어",
+          target_url: "goods_list"
+        },
+        {
+          id: "grip",
+          name: "그립/바테입",
+          target_url: "goods_list"
+        },
+        {
+          id: "compute",
+          name: "속도계",
+          target_url: "goods_list"
+        },
+        {
+          id: "acc_etc",
+          name: "기타",
+          target_url: "goods_list"
+        }
+      ]
+    },
+    {
+      id: "20",
       name: "게시판",
       target_url: "/contents_list"
     },
     {
-      id: "3",
+      id: "30",
       name: "사용자",
       clss: "dropdown",
       subcategories: [
@@ -67,5 +121,4 @@ export class TopNavComponent {
       ]
     },
   ];
-
 }

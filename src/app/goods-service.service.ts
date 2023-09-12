@@ -184,6 +184,82 @@ export class GoodsServiceService {
       price: 600000,
       rep_image: "../../assets/images/flower02.jpg"
     },
+    {
+      category_id: "compute",
+      id: "compute_4",
+      brand: "Bryton",
+      name: "Rider S800",
+      price: 540000,
+      rep_image: "../../assets/images/accessory/bryton_s800.jpg"
+    },
+    {
+      category_id: "compute",
+      id: "compute_5",
+      brand: "Bryton",
+      name: "Rider S500",
+      price: 400000,
+      rep_image: "../../assets/images/accessory/bryton_s500.jpg"
+    },
+    {
+      category_id: "acc_etc",
+      id: "acc_etc_1",
+      brand: "Giyo",
+      name: "GP-2530",
+      price: 38000,
+      rep_image: "../../assets/images/accessory/giyo_pump_2530.jpg"
+    },
+    {
+      category_id: "tire",
+      id: "tire_1",
+      brand: "Continental",
+      name: "Grand Prix 5000 Clincher",
+      price: 87000,
+      rep_image: "../../assets/images/accessory/continental_5000_cl.jpg"
+    },
+    {
+      category_id: "tire",
+      id: "tire_2",
+      brand: "Continental",
+      name: "Grand Prix 5000 S TR",
+      price: 120000,
+      rep_image: "../../assets/images/accessory/continental_5000s_tr.jpg",
+      is_new_prod: "신제품"
+    },
+    {
+      category_id: "grip",
+      id: "grip_1",
+      brand: "Ciclovation",
+      name: "레더터치 메탈릭 캔디 애플 레드",
+      price: 50000,
+      rep_image: "../../assets/images/accessory/CICLOVATION_red.jpg",
+      is_in_stock: "입고"
+    },
+    {
+      category_id: "grip",
+      id: "grip_2",
+      brand: "Ciclovation",
+      name: "레더터치 메탈릭 에머시스트 퍼프",
+      price: 50000,
+      rep_image: "../../assets/images/accessory/CICLOVATION_purple.jpg",
+      is_in_stock: "입고"
+    },
+    {
+      category_id: "drive",
+      id: "drive_1",
+      brand: "Shimano",
+      name: "FC-R9200-P 파워미터 크랭크 (12단)",
+      price: 1938000,
+      rep_image: "../../assets/images/parts/1629957460139m0.jpg"
+    },
+    {
+      category_id: "drive",
+      id: "drive_2",
+      brand: "Shimano",
+      name: "CS-M5100 (11단, 11-48)",
+      price: 100000,
+      rep_image: "../../assets/images/parts/158891540078m0.jpg",
+      is_in_stock: "입고"
+    },
   ];
 
   Categories: Category[] = [
