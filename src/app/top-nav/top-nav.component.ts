@@ -10,6 +10,7 @@ export class TopNavComponent {
 
   categories: Category[] = [
     {
+      c_group: "goods",
       id: "1",
       name: "자전거",
       clss: "dropdown",
@@ -37,6 +38,7 @@ export class TopNavComponent {
       ]
     },
     {
+      c_group: "goods",
       id: "2",
       name: "부품",
       clss: "dropdown",
@@ -64,6 +66,7 @@ export class TopNavComponent {
       ]
     },
     {
+      c_group: "goods",
       id: "3",
       name: "용품",
       clss: "dropdown",
@@ -91,11 +94,19 @@ export class TopNavComponent {
       ]
     },
     {
+      c_group: "goods",
       id: "20",
       name: "게시판",
       target_url: "/contents_list"
     },
     {
+      c_group: "users",
+      id: "31",
+      name: "사용자 등록",
+      target_url: "/register_user"
+    },
+    {
+      c_group: "users",
       id: "30",
       name: "사용자",
       clss: "dropdown",
@@ -106,12 +117,12 @@ export class TopNavComponent {
           icon_clss: "bi-box-arrow-in-right",
           target_url: "user"
         },
-        {
-          id: "register",
-          name: "사용자등록",
-          icon_clss: "bi-person-plus",
-          target_url: "user"
-        },
+        // {
+        //   id: "register",
+        //   name: "사용자등록",
+        //   icon_clss: "bi-person-plus",
+        //   target_url: "user"
+        // },
         {
           id: "cart",
           name: "장바구니",

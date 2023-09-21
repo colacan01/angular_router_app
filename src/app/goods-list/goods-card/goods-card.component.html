@@ -1,27 +1,29 @@
-<div class="card">
-    <div class="card-body">
-        <div class="card_img_fixed_height">
-            <img class="card-img-top card-img-top-fit" src="{{good.rep_image}}" />
-        </div>
-        <div class="d-flex mb-2">
-            <div id="brand_group-3" class="col" style="text-align: left;">
-                <span class="good_item_brand">{{good.brand}}</span>
+<a [routerLink]="['/good_detail', good.id]">
+    <div class="card">
+        <div class="card-body">
+            <div class="card_img_fixed_height">
+                <img class="card-img-top card-img-top-fit" src="{{good.rep_image}}" />
             </div>
-            <div id="badge-group-3" class="col" style="text-align: right;">
-                <span class="new_prod"      *ngIf="good?.is_new_prod">{{good.is_new_prod}}</span>
-                <span class="in_stock"      *ngIf="good?.is_in_stock">{{good.is_in_stock}}</span>
-                <span class="sale_discount" *ngIf="good?.is_sale_discount">{{good.is_sale_discount}}</span>
-                <span class="sold_out"      *ngIf="good?.is_sold_out">{{good.is_sold_out}}</span>
-                <span class="invisible"></span></div>
-        </div>
-        <p class="prod_name">{{good.name}} 
-            <span class="badge badge_my">{{good.my}}</span>
-        </p>
-        <p *ngIf="good?.ori_price"  class="good_item_ori_price" >{{good.ori_price | number }} 원</p>
-        <p *ngIf="!good?.ori_price" class="good_item_ori_price invisible" > 원</p>
-        <div class="d-flex justify-content-between">
-            <span class="good_item_disc_per">{{good.discount_per | percent }}</span>
-            <span class="good_item_price">{{good.price | number }} 원</span>
+            <div class="d-flex mb-2">
+                <div id="brand_group-3" class="col" style="text-align: left;">
+                    <span class="good_item_brand">{{good.brand}}</span>
+                </div>
+                <div id="badge-group-3" class="col" style="text-align: right;">
+                    <span class="new_prod"      *ngIf="good?.is_new_prod">{{good.is_new_prod}}</span>
+                    <span class="in_stock"      *ngIf="good?.is_in_stock">{{good.is_in_stock}}</span>
+                    <span class="sale_discount" *ngIf="good?.is_sale_discount">{{good.is_sale_discount}}</span>
+                    <span class="sold_out"      *ngIf="good?.is_sold_out">{{good.is_sold_out}}</span>
+                    <span class="invisible"></span></div>
+            </div>
+            <p class="prod_name">{{good.name}} 
+                <span class="badge badge_my">{{good.my}}</span>
+            </p>
+            <p *ngIf="good?.ori_price"  class="good_item_ori_price" >{{good.ori_price | number }} 원</p>
+            <p *ngIf="!good?.ori_price" class="good_item_ori_price invisible" > 원</p>
+            <div class="d-flex justify-content-between">
+                <span class="good_item_disc_per">{{good.discount_per | percent }}</span>
+                <span class="good_item_price">{{good.price | number }} 원</span>
+            </div>
         </div>
     </div>
-</div>
+</a>

@@ -6,7 +6,9 @@ html, body {
   height: 100%;
   font-family: 'IBM Plex Sans KR', sans-serif;
 }
+
 body { margin: 0; }
+
 main {
     min-height: calc(100% - 359px);;
     padding-bottom: 10px;
@@ -14,10 +16,7 @@ main {
   }
   
 footer {
-  /* height: 100px; */
   position: relative;
-  /* transform: translateY(-100%); */
-  /* bottom: 0; */
   background: var(--bs-body-color);
   color: var(--bs-secondary-bg);
   padding-top: 10px;
@@ -25,4 +24,8 @@ footer {
 
 footer .container {
   height: 100%;
+}
+
+a:link {
+  text-decoration: none;
 }

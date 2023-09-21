@@ -298,6 +298,14 @@ export class GoodsServiceService {
     return this.Goods.filter( a => a.category_id === category_id);
   }
 
+  getGoodsNewProd(): Good[] {
+    return this.Goods.filter( a => a.is_new_prod === "신제품");
+  }
+
+  getGoodsPop(): Good[] {
+    return this.Goods.filter( a => a.is_sale_discount === "할인");
+  }
+
   getGoodByCategoryGood(category_id: string, good_id: string): Good | undefined {
     return this.Goods.find( a => a.category_id === category_id && a.id === good_id);
   }

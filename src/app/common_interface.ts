@@ -1,4 +1,5 @@
 export interface Category {
+    c_group?: string;
     id: string;
     name: string;
     target_url?: string;

@@ -13,6 +13,7 @@ export class MainIntroComponent {
   categoryId: string;  
   category?:  Category;
   Goods:      Good[] = [];   /** 상품 리스트 변수 */
+  PopGoods:   Good[] = [];   /** 상품 리스트 변수 */
   
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +25,12 @@ export class MainIntroComponent {
       /** 아래 코드를 넣어야 같은 화면에서 리프레쉬 됨 */
       this.route.params.subscribe(
         params => {
-          this.Goods        = this.goodsService.getGoodsAll();          
-          this.category     = this.goodsService.getCategory(this.categoryId);
+          this.Goods        = this.goodsService.getGoodsNewProd();
+          this.PopGoods     = this.goodsService.getGoodsPop();          
+          // this.category     = this.goodsService.getCategory(this.categoryId);
           console.log('values: ', this.categoryId);        
         }
       );
     }
+
 }

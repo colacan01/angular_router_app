@@ -14,6 +14,7 @@ import { CartComponent } from './user/cart/cart.component';
 import { GoodsCardComponent } from './goods-list/goods-card/goods-card.component';
 import { FooterMapComponent } from './footer-map/footer-map.component';
 import { OrdersComponent } from './user/orders/orders.component';
+import { GoodDetailComponent } from './goods-list/good-detail/good-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrdersComponent } from './user/orders/orders.component';
     CartComponent,
     GoodsCardComponent,
     FooterMapComponent,
-    OrdersComponent
+    OrdersComponent,
+    GoodDetailComponent
   ],
   imports: [
     BrowserModule,
