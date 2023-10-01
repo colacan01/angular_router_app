@@ -2,12 +2,12 @@
     <div class="container mb-3"></div>
 </section>
 <main>
-    <div class="container">
+    <div class="container" style="font-size: .7rem">
         <div class="table-responsive">
             <table class="table">
                 <thead class="caption-top">
                     <tr>
-                        <th style="background: #e4e4e4;">Order_No</th>
+                        <th style="background: #e4e4e4;">Order No</th>
                         <th style="background: #e4e4e4;">이미지</th>
                         <th style="background: #e4e4e4;">상품명</th>
                         <th class="text-center" style="background: #e4e4e4;">주문수량</th>
@@ -17,33 +17,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="line-height: 45px;">2023081700001</td>
-                        <td><img src="../../../assets/images/ICSHG5010136.jpg" width="45 px" height="45 px" /></td>
-                        <td style="line-height: 45px;">[ICSHG5010136] CS-HG50-10 (10단) [10단,11-36T]</td>
-                        <td style="text-align: right;line-height: 45px;">1</td>
-                        <td style="text-align: right;line-height: 45px;">44,500</td>
-                        <td style="text-align: center;line-height: 45px;">카드</td>
-                        <td style="text-align: center;line-height: 45px;">배송완료</td>
-                    </tr>
-                    <tr>
-                        <td style="line-height: 45px;">2023081700002</td>
-                        <td><img src="../../../assets/images/ICNHG54116I.jpg" width="45 px" height="45 px" /></td>
-                        <td style="line-height: 45px;">[ICNHG54116I] CN-HG54 (10단,116링크) [CN-HG54]</td>
-                        <td style="text-align: right;line-height: 45px;">1</td>
-                        <td style="text-align: right;line-height: 45px;">28,700</td>
-                        <td style="text-align: center;line-height: 45px;">카드</td>
-                        <td style="text-align: center;line-height: 45px;">배송완료</td>
-                    </tr>
-                    <tr>
-                        <td style="line-height: 45px;">2023081700002</td>
-                        <td><img src="../../../assets/images/ICSHG5010136.jpg" width="45 px" height="45 px" /></td>
-                        <td style="line-height: 45px;">[ICSHG5010136] CS-HG50-10 (10단) [10단,11-36T]</td>
-                        <td style="text-align: right;line-height: 45px;">2</td>
-                        <td style="text-align: right;line-height: 45px;">44,500</td>
-                        <td style="text-align: center;line-height: 45px;">카드</td>
-                        <td style="text-align: center;line-height: 45px;">배송완료</td>
-                    </tr>
+                    <tr *ngFor="let Order of Orders">
+                        <td style="line-height: 45px;">{{Order.order_no}}</td>
+                        <td><a [routerLink]="['/good_detail', Order.good_id]"><img src="{{Order.rep_image}}" width="45 px" height="45 px" /></a></td>
+                        <td style="line-height: 45px;"><a [routerLink]="['/good_detail', Order.good_id]">{{Order.name}}</a></td>
+                        <td style="text-align: right;line-height: 45px;">{{Order.order_qty}}</td>
+                        <td style="text-align: right;line-height: 45px;">{{Order.order_amount | number}}</td>
+                        <td style="text-align: center;line-height: 45px;">{{Order.pay_method}}</td>
+                        <td style="text-align: center;line-height: 45px;">{{Order.deli_stat}}</td>
+                    </tr>                    
                 </tbody>
             </table>
         </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category, Good } from './common_interface';
+import { Category, SubCategory, Good, Order } from './common_interface';
 
 @Injectable({
   providedIn: 'root'
@@ -262,36 +262,281 @@ export class GoodsServiceService {
     },
   ];
 
-  Categories: Category[] = [
+  SubCategories: SubCategory[] = [
     {
       id: "road",
       name: "로드",
-      banner_img: "../../assets/images/banner_road.jpg"
+      banner_img: "../../assets/images/banner_road.jpg",
+      target_url: "goods_list"
     },
     {
       id: "mtb",
-      name: "엠티비",
-      banner_img: "../../assets/images/banner_mtb.jpg"
+      name: "MTB",
+      banner_img: "../../assets/images/banner_road.jpg",
+      target_url: "goods_list"
     },
     {
       id: "hyb",
       name: "하이브리드",
-      banner_img: "../../assets/images/banner_hyb.jpg"
+      banner_img: "../../assets/images/banner_hyb.jpg",
+      target_url: "goods_list"
     },
     {
       id: "kid",
       name: "아동",
-      banner_img: "../../assets/images/banner_kid.jpg"
+      banner_img: "../../assets/images/banner_hyb.jpg",
+      target_url: "goods_list"
+    },
+    {
+      id: "drive",
+      name: "구동계",
+      banner_img: "../../assets/images/950_DA_R9200.jpg",
+      target_url: "goods_list"
+    },
+    {
+      id: "brake",
+      name: "브레이크",
+      banner_img: "../../assets/images/xtr_group_set.jpg",
+      target_url: "goods_list"
+    },
+    {
+      id: "stier",
+      name: "조향부",
+      target_url: "goods_list"
+    },
+    {
+      id: "part_etc",
+      name: "기타",
+      banner_img: "../../assets/images/950_grx_2023.jpg",
+      target_url: "goods_list"
+    },
+    {
+      id: "tire",
+      name: "타이어",
+      target_url: "goods_list"
+    },
+    {
+      id: "grip",
+      name: "그립/바테입",
+      target_url: "goods_list"
+    },
+    {
+      id: "compute",
+      name: "속도계",
+      target_url: "goods_list"
+    },
+    {
+      id: "acc_etc",
+      name: "기타",
+      target_url: "goods_list"
     }
-  ]
+  ];
+
+  Categories: Category[] = [
+    {
+      c_group: "goods",
+      id: "1",
+      name: "자전거",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "road",
+          name: "로드",
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_road.jpg"
+        },
+        {
+          id: "mtb",
+          name: "MTB",
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_road.jpg"
+        },
+        {
+          id: "hyb",
+          name: "하이브리드",
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_hyb.jpg"
+        },
+        {
+          id: "kid",
+          name: "아동",
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_hyb.jpg"
+        }
+      ]
+    },
+    {
+      c_group: "goods",
+      id: "2",
+      name: "부품",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "drive",
+          name: "구동계",
+          target_url: "goods_list"
+        },
+        {
+          id: "brake",
+          name: "브레이크",
+          target_url: "goods_list"
+        },
+        {
+          id: "stier",
+          name: "조향부",
+          target_url: "goods_list"
+        },
+        {
+          id: "part_etc",
+          name: "기타",
+          target_url: "goods_list"
+        }
+      ]
+    },
+    {
+      c_group: "goods",
+      id: "3",
+      name: "용품",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "tire",
+          name: "타이어",
+          target_url: "goods_list"
+        },
+        {
+          id: "grip",
+          name: "그립/바테입",
+          target_url: "goods_list"
+        },
+        {
+          id: "compute",
+          name: "속도계",
+          target_url: "goods_list"
+        },
+        {
+          id: "acc_etc",
+          name: "기타",
+          target_url: "goods_list"
+        }
+      ]
+    },
+    {
+      c_group: "goods",
+      id: "20",
+      name: "게시판",
+      target_url: "/contents_list"
+    },
+    {
+      c_group: "users",
+      id: "31",
+      name: "사용자 등록",
+      target_url: "/register_user"
+    },
+    {
+      c_group: "users",
+      id: "30",
+      name: "사용자",
+      clss: "dropdown",
+      subcategories: [
+        {
+          id: "login",
+          name: "로그인",
+          icon_clss: "bi-box-arrow-in-right",
+          target_url: "user"
+        },
+        // {
+        //   id: "register",
+        //   name: "사용자등록",
+        //   icon_clss: "bi-person-plus",
+        //   target_url: "user"
+        // },
+        {
+          id: "cart",
+          name: "장바구니",
+          icon_clss: "bi-cart4",
+          target_url: "user"
+        },
+      ]
+    },
+  ];
+
+  Orders: Order[] = [
+    {
+      user_id: "colacan",
+      order_no: "2023081700001",
+      item_seq: 1,
+      good_id: "1",
+      rep_image: "../../../assets/images/ICSHG5010136.jpg",
+      name: "[ICSHG5010136] CS-HG50-10 (10단) [10단,11-36T]",
+      order_qty: 1,
+      order_amount: 44500,
+      pay_method: "카드",   
+      deli_stat: "배송완료"
+    },
+    {
+      user_id: "colacan",
+      order_no: "2023081700002",
+      item_seq: 1,
+      good_id: "1",
+      rep_image: "../../../assets/images/ICNHG54116I.jpg",
+      name: "[ICNHG54116I] CN-HG54 (10단,116링크) [CN-HG54]",
+      order_qty: 1,
+      order_amount: 28700,
+      pay_method: "카드",   
+      deli_stat: "배송완료"
+    },
+    {
+      user_id: "colacan",
+      order_no: "2023081700002",
+      item_seq: 2,
+      good_id: "1",
+      rep_image: "../../../assets/images/ICSHG5010136.jpg",
+      name: "[ICSHG5010136] CS-HG50-10 (10단) [10단,11-36T]",
+      order_qty: 2,
+      order_amount: 89000,
+      pay_method: "카드",   
+      deli_stat: "배송완료"
+    },
+    {
+      user_id: "peach",
+      order_no: "2023081700001",
+      item_seq: 1,
+      good_id: "1",
+      rep_image: "../../../assets/images/ICSHG5010136.jpg",
+      name: "[ICSHG5010136] CS-HG50-10 (10단) [10단,11-36T]",
+      order_qty: 1,
+      order_amount: 44500,
+      pay_method: "카드",   
+      deli_stat: "배송완료"
+    },
+    {
+      user_id: "peach",
+      order_no: "2023081700002",
+      item_seq: 1,
+      good_id: "1",
+      rep_image: "../../../assets/images/ICNHG54116I.jpg",
+      name: "[ICNHG54116I] CN-HG54 (10단,116링크) [CN-HG54]",
+      order_qty: 1,
+      order_amount: 28700,
+      pay_method: "카드",   
+      deli_stat: "배송완료"
+    },
+  ];
+
   constructor() { }
 
-  getCategory(category_id: string): Category | undefined {
-    return this.Categories.find( a => a.id === category_id);
+  getSubCategory(category_id: string): Category | undefined {
+    return this.SubCategories.find( a => a.id === category_id);
   }
 
-  getCategoryAll(): Category[] | undefined {
-    return this.Categories;
+  // getSubCategory(id: string): SubCategory | undefined {
+  //   // return this.Categories.find( a => a.subcategories?.find(b => b.id === id));
+  //   return this.Categories.
+  // }
+
+  getSubCategoryAll(): Category[] | undefined {
+    return this.SubCategories;
   }
 
   getGoodsByCategory(category_id: string): Good[] {
@@ -312,5 +557,13 @@ export class GoodsServiceService {
 
   getGoodsAll(): Good[] {
     return this.Goods;
+  }
+
+  getGood(good_id: string): Good | undefined {
+    return this.Goods.find(a => a.id === good_id);
+  }
+
+  getOrdersAll(user_id: string): Order[] {
+    return this.Orders.filter(a => a.user_id === user_id);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit  }           from '@angular/core';
 import { ActivatedRoute }                       from '@angular/router';
 import { GoodsServiceService }                  from '../goods-service.service';
-import { Category, Good }                                 from '../common_interface';
+import { SubCategory, Good }                    from '../common_interface';
 import { GoodsCardComponent }                   from './goods-card/goods-card.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { GoodsCardComponent }                   from './goods-card/goods-card.co
 export class GoodsListComponent implements OnInit {
   
   categoryId: string;  
-  category?:  Category;
+  subcategory?:  SubCategory;
   Goods:      Good[] = [];   /** 상품 리스트 변수 */
 
   // goodsService: GoodsServiceService = inject(GoodsServiceService);
@@ -30,7 +30,7 @@ export class GoodsListComponent implements OnInit {
         params => {
           this.categoryId   = String(params['id']);
           this.Goods        = this.goodsService.getGoodsByCategory(this.categoryId);          
-          this.category     = this.goodsService.getCategory(this.categoryId);
+          this.subcategory  = this.goodsService.getSubCategory(this.categoryId);
           console.log('values: ', this.categoryId);        
         }
       );

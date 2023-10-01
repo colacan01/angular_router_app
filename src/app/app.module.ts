@@ -15,6 +15,7 @@ import { GoodsCardComponent } from './goods-list/goods-card/goods-card.component
 import { FooterMapComponent } from './footer-map/footer-map.component';
 import { OrdersComponent } from './user/orders/orders.component';
 import { GoodDetailComponent } from './goods-list/good-detail/good-detail.component';
+import { ContentViewComponent } from './contents-list/content-view/content-view.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GoodDetailComponent } from './goods-list/good-detail/good-detail.compon
     GoodsCardComponent,
     FooterMapComponent,
     OrdersComponent,
-    GoodDetailComponent
+    GoodDetailComponent,
+    ContentViewComponent
   ],
   imports: [
     BrowserModule,

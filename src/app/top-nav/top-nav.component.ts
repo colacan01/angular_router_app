@@ -18,22 +18,26 @@ export class TopNavComponent {
         {
           id: "road",
           name: "로드",
-          target_url: "goods_list"
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_road.jpg"
         },
         {
           id: "mtb",
           name: "MTB",
-          target_url: "goods_list"
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_road.jpg"
         },
         {
           id: "hyb",
           name: "하이브리드",
-          target_url: "goods_list"
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_hyb.jpg"
         },
         {
           id: "kid",
           name: "아동",
-          target_url: "goods_list"
+          target_url: "goods_list",
+          banner_img: "../../assets/images/banner_hyb.jpg"
         }
       ]
     },
