@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category, SubCategory, Good, Order } from './common_interface';
+import { Category, SubCategory, Good, Order, Article } from './common_interface';
 
 @Injectable({
   providedIn: 'root'
@@ -524,6 +524,58 @@ export class GoodsServiceService {
     },
   ];
 
+  Articles: Article[] = [
+    {
+      board_id: "notice",
+      article_id: 1,
+      user_id: "colacan",
+      article_subject: "자전거 전동 펌프와 저소음 키보드 추천부탁드려요",
+      article_body: "안녕하세요" +
+      "오랜만에 글을 올리네요" +
+      "다름이 아니라 아들이 자기네 회사 펌프레셔에서 자전거 바람을 너무 많이 넣어서 터지는 사고가 있어서" +
+      "적정압으로 넣을 수 있는 괜찮은 전동 펌프를 추천부탁드려요." +
+      "그리고, 또 아들 얘긴데 요놈이 새벽까지 게임하느라 키보드 소리가 시끄려워서 한마디 했습니다." +
+      "생각해보니 저도 이전에 듄2000인가? 새벽까지 했던기억이 있네요. 전략시뮬이였던것 같은데..." +
+      "그래서 키보드를 제돈으로 사줄려고 합니다. 소리가 덜나는 것 으로요 10만원 미만으로 부탁드려요" +      
+      "추천부탁드려요 감사합니다.", 
+      read_count: 1,
+      write_date: new Date(2023, 8, 15),
+      recommend_count: 0,
+      // replies?: Article_Reply[];
+    },
+    {
+      board_id: "notice",
+      article_id: 2,
+      user_id: "colacan",
+      article_subject: "인도 유투버의 아이폰과 갤럭시 드롭 테스트 영상",
+      article_body: "영어가 인도어처럼 들리는 마법.." +
+      "어차피 자막으로만 봄... ㅋㅋㅋ" , 
+      read_count: 1,
+      write_date: new Date(2023, 8, 15),
+      recommend_count: 0,
+      // replies?: Article_Reply[];
+    },
+    {
+      board_id: "notice",
+      article_id: 3,
+      user_id: "colacan",
+      article_subject: "후후후.. 추석 내내 침대생활",
+      article_body: "집 밖에 나가서 뭔가 작업을해야지..는 입발린 계획 뿐." +
+      "아무것도 안하고 5일이 지나갔습니다." +      
+      "퀘스트 3를 사게 되서 구 기종이 되어버린 퀘스트 2 2대를 전부팔지, 일부 남길지 고민을 남기고," +
+      "이마에는 뾰루지가 나 버렸고," +
+      "관절아픈 증상은 싹 나았으나, 이제 일 다시 시작하면 관절통에 근육통이라는 더블콤보가 기다릴테고.." +
+      "몇년 전이라면 금토일 같이 3일 쉬면, 적어도 하루이틀은 이것저것 고친다고 막 작업하고 그랬는데," +
+      "요즘엔 4일이 뭔가, 6일 연휴 내내 한번도 작업하고싶지 않다는 생각이 드는 걸 봐서는" +
+      "정비 취미를 진짜 접어야하나.. 하는 생각이 듭니다." +      
+      "바이크도 1년에 주행거리 3천킬로도 안 넘으니 진짜 생활차 몇대 남기고 접어야 하나.." +
+      "아무래도 대 숙청의 시대를 거쳐야 할 듯 합니다." , 
+      read_count: 1,
+      write_date: new Date(2023, 8, 17),
+      recommend_count: 0,
+      // replies?: Article_Reply[];
+    },
+  ]
   constructor() { }
 
   getSubCategory(category_id: string): Category | undefined {
@@ -565,5 +617,9 @@ export class GoodsServiceService {
 
   getOrdersAll(user_id: string): Order[] {
     return this.Orders.filter(a => a.user_id === user_id);
+  }
+
+  getArticleAll(): Article[] {
+    return this.Articles;
   }
 }

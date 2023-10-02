@@ -7,7 +7,7 @@
             <div class="col">
                 <nav style="font-size: 0.85em">
                     <ul class="nav pagination">
-                        <li class="nav-item page-item"><a class="nav-link active" href="#">글쓰기</a></li>
+                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']">글쓰기</a></li>
                         <li class="nav-item page-item"><a class="nav-link active" href="#">찾기옵션</a></li>
                         <li class="nav-item page-item"><a class="nav-link" href="#">관리2</a></li>
                         <li class="nav-item page-item"></li>
@@ -28,7 +28,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let Article of Articles">
+                        <td>{{Article.article_id}}</td>
+                        <td>{{Article.user_id}}</td>
+                        <td><a [routerLink]="['/content_view']">{{Article.article_subject}}</a></td>
+                        <td style="text-align: right;">{{Article.read_count}}</td>
+                        <td style="text-align: right;">{{Article.write_date | date: 'yyyy-MM-dd'}}</td>
+                        <td style="text-align: center;">{{Article.recommend_count}}</td>
+                    </tr>
+                    <!-- <tr>
                         <td>1</td>
                         <td>colacan</td>
                         <td><a [routerLink]="['/content_view']">목적지 말하니까 화내는 택시기사</a></td>
@@ -51,7 +59,7 @@
                         <td style="text-align: right;">2</td>
                         <td style="text-align: right;">{{'2023-08-16' | date: 'yyyy-MM-dd'}}</td>
                         <td style="text-align: center;">1</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

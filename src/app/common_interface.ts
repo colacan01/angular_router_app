@@ -56,13 +56,20 @@ export interface Order {
     deli_stat: string; 
 }
 
-export interface Board {
+export interface Article {
     board_id: string;
     article_id: number;
     user_id: string;
     article_subject: string;
     article_body: string;
     read_count: number;
-    wrtie_date: Date;
+    write_date: Date;
     recommend_count: number;
+    replies?: Article_Reply[];
+}
+
+export interface Article_Reply {
+    user_id: string;
+    reply_body: string;
+    wrtie_date: Date;
 }

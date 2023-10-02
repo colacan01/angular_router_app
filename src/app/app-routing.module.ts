@@ -6,6 +6,7 @@ import { GoodsListComponent }       from './goods-list/goods-list.component';
 import { GoodDetailComponent }      from './goods-list/good-detail/good-detail.component';
 import { ContentsListComponent }    from './contents-list/contents-list.component';
 import { ContentViewComponent }     from './contents-list/content-view/content-view.component';
+import { ContentWriteComponent }    from './contents-list/content-write/content-write.component';
 import { UserComponent }            from './user/user.component';
 import { LoginComponent }           from './user/login/login.component';
 import { RegisterComponent }        from './user/register/register.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'good_detail/:id', component: GoodDetailComponent },
   {path: 'contents_list',   component: ContentsListComponent },                         /** 게시판 ID를 파라매터로 넘겨줘야 함 */
   {path: 'content_view',    component: ContentViewComponent },
+  {path: 'content_write',   component: ContentWriteComponent },
   {path: 'register',        component: RegisterComponent },
   {path: 'user',            component: UserComponent,
    children: [

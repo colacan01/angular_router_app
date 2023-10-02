@@ -16,6 +16,7 @@ import { FooterMapComponent } from './footer-map/footer-map.component';
 import { OrdersComponent } from './user/orders/orders.component';
 import { GoodDetailComponent } from './goods-list/good-detail/good-detail.component';
 import { ContentViewComponent } from './contents-list/content-view/content-view.component';
+import { ContentWriteComponent } from './contents-list/content-write/content-write.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ContentViewComponent } from './contents-list/content-view/content-view.
     FooterMapComponent,
     OrdersComponent,
     GoodDetailComponent,
-    ContentViewComponent
+    ContentViewComponent,
+    ContentWriteComponent
   ],
   imports: [
     BrowserModule,
