@@ -11,11 +11,16 @@ export class GoodsServiceService {
       id: "1",
       brand: "SCOTT",
       name: "Addict RC 10",
+      name_ko: "애딕트 RC 10",
       my: "MY23",
       ori_price: 13600000,
       price: 10300000,
       discount_per: 0.2,
       rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_10.jpg",
+      message: "가볍고 빠르고 매력적인 디자인을 갖춘 에딕트 RC 10은 당신이 꿈꿔왔던 모든 경쟁적 우위를 제공합니다. 완전히 통합된 케이블과 레이스에 바로 출전할 수 있는 사양을 갖춘 이 자전거는 산 정상을 향해 질주하거나 지역의 크리테리움 경기에서 우승을 하는 데 도움을 줄 것입니다.",
+      features: "에딕트 RC 디스크 HMX 카본 프레임;에딕트 RC HMX 포크;SRAM 포스 AXS eTap 24단 구동계;싱크로스 캐피탈 1.0 35 디스크 휠;슈발베 ONE 레이스-가드 타이어;싱크로스 카본/알로이 파츠",
+      size: "XXS(47);XS(49);S(52);M(54);L(56);XL(58)",
+      specs: "FRAME|Addict RC Disc HMX / Road Race geometry / Replaceable Derailleur Hanger / Internal cable routing;FORK|Addict RC HMX Flatmount Disc / 1 1/4\"-1 1/2\" Eccentric Carbon steerer;REAR DERAILLEUR|SRAM FORCE eTap AXS / 24 Speed Electronic Shift System;FRONT DERAILLEUR|SRAM FORCE eTap AXS Electronic Shift System;SHIFTERS|SRAM FORCE eTap AXS HRD Shift-Brake System;CRANKSET|SRAM FORCE Power meter Crankset /48/35 T;BB-SET|SRAM DUB PF ROAD 86.5;CHAIN|SRAM FORCE;CASSETTE|SRAM FORCE XG1270 / 10-33;",
       is_new_prod: "신제품"
     },
     {
@@ -23,18 +28,27 @@ export class GoodsServiceService {
       id: "2",
       brand: "SCOTT",
       name: "Addict RC 15",
+      name_ko: "애딕트 RC 15",
       my: "MY23",
       price: 9000000,
-      rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_15.jpg"
+      rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_15.jpg",
+      message: "가볍고 빠르고 매력적인 디자인을 갖춘 에딕트 RC 15는 당신이 꿈꿔왔던 모든 경쟁적 우위를 제공합니다. 완전히 통합된 케이블과 레이스에 바로 출전할 수 있는 사양을 갖춘 이 자전거는 산 정상을 향해 질주하거나 지역의 크리테리움 경기에서 우승을 하는 데 도움을 줄 것입니다.",
+      features: "에딕트 RC 디스크 HMX 카본 프레임;에딕트 RC HMX 포크;시마노 울테그라 Di2 디스크 24단 구동계;싱크로스 캐피탈 1.0 35 디스크 휠;슈발베 ONE 레이스-가드 타이어;싱크로스 카본/알로이 파츠",
+      size: "XS(49);S(52);M(54);L(56)",
+      specs: "FRAME|Addict RC Disc HMX / Road Race geometry / Replaceable Derailleur Hanger / Internal cable routing;FORK|Addict RC HMX Flatmount Disc / 1 1/4\"-1 1/2\" Eccentric Carbon steerer;REAR DERAILLEUR|Shimano Ultegra Di2 RD-R8150-SS / 24 Speed Electronic Shift System;FRONT DERAILLEUR|Shimano Ultegra Di2 FD-R8150 / Electronic Shift System;SHIFTERS|Shimano Ultegra ST-R8170 / 24 Speed Electronic Shift System;CRANKSET|Shimano Ultegra FC-R8100 / Hollowtech II 52x36 T;BB-SET|Shimano SM-BB72-41B;CHAIN|Shimano Ultegra CN-M8100-12;CASSETTE|Shimano Ultegra CS-R8100-12 / 11-30;BRAKES|Shimano BR-R8170 Hyd.Disc;ROTOR|Shimano RT-CL800 rotor 160/F and 160/R;HANDLEBAR|Syncros Creston 1.0 Compact Carbon;H'STEM|Syncros RR 1.5 / 1 1/4\";SEATPOST|Syncros Duncan 1.0 Aero;SEAT|Syncros Belcarra Regular 2.0;HEADSET|Syncros Addict RC Integrated;WHEELSET|Syncros Capital 1.0 35 Disc / 24 Front / 24 Rear / Syncros Axle / Removable Lever with Tool;FRONT TIRE|Schwalbe ONE Race-Guard Fold / 700x28C;REAR TIRE|Schwalbe ONE Race-Guard Fold / 700x28C;APPROX WEIGHTS IN KG|7.6;MAX.SYSTEM WEIGHT|120kg;",
     },
     {
       category_id: "road",
       id: "3",
       brand: "SCOTT",
       name: "Addict RC 20",
+      name_ko: "애딕트 RC 20",
       my: "MY23",
       price: 7800000,
       rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_20.jpg",
+      message: "가볍고 빠르고 매력적인 디자인을 갖춘 에딕트 RC 20은 당신이 꿈꿔왔던 모든 경쟁적 우위를 제공합니다. 완전히 통합된 케이블과 레이스에 바로 출전할 수 있는 사양을 갖춘 이 자전거는 산 정상을 향해 질주하거나 지역의 크리테리움 경기에서 우승을 하는 데 도움을 줄 것입니다.",
+      features: "에딕트 RC 디스크 HMX 카본 프레임;에딕트 RC HMX 포크;SRAM 포스 eTap AXS 디스크 24단 구동계;싱크로스 RP2.0 디스크 휠;슈발베 ONE 레이스-가드 타이어;싱크로스 카본/알로이 파츠",
+      size: "XXS(47);XS(49);S(52);M(54);L(56)",
       is_in_stock: "입고"
     },
     {
@@ -42,6 +56,7 @@ export class GoodsServiceService {
       id: "4",
       brand: "SCOTT",
       name: "Addict RC 30",
+      name_ko: "애딕트 RC 30",
       my: "MY22",
       price: 6950000,
       rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_30.jpg"
@@ -51,9 +66,11 @@ export class GoodsServiceService {
       id: "5",
       brand: "SCOTT",
       name: "Addict RC 40",
+      name_ko: "애딕트 RC 40",
       my: "MY23",
       price: 6350000,
       rep_image: "../../assets/images/road/bike_addict_rc/addict_rc_40.jpg",
+      specs: "FRAME|Addict RC Disc HMX / Road Race geometry / Replaceable Derailleur Hanger / Internal cable routing;FORK|Addict RC HMX Flatmount Disc / 1 1/4\"-1 1/2\" Eccentric Carbon steerer;REAR DERAILLEUR|Shimano 105 Di2 RD-R7150 24 Speed Electronic Shift System;FRONT DERAILLEUR|Shimano 105 Di2 FD-R7150;SHIFTERS|Shimano 105 Di2 ST-R7170 24 Speed Electronic Shift System;CRANKSET|Shimano 105 FC-R7100 Hollowtech II 50x34 T;BB-SET|Shimano BB-RS500-PB;CHAIN|Shimano CN-M6100-12;CASSETTE|Shimano CS-R7100 11-34;BRAKES|Shimano BR-R7170 Hyd.Disc;ROTOR|Shimano SM-RT70 CL rotor 160/F and 160/R;HANDLEBAR|Syncros Creston 2.0 Compact Alloy;H'STEM|Syncros RR 1.5 1 1/4\";SEATPOST|Syncros Duncan 1.0 Aero;SEAT|Syncros Belcarra Regular 2.0;HEADSET|Syncros Addict RC Integrated;WHEELSET|Syncros RP2.0 Disc / 28 Front / 28 Rear / Syncros Axle / Removable Lever with Tool;FRONT TIRE|Schwalbe ONE Race-Guard Fold / 700x28C;REAR TIRE|Schwalbe ONE Race-Guard Fold / 700x28C;APPROX WEIGHTS IN KG|7.9;MAX. SYSTEM WEIGHT|120kg",
       is_sold_out: "품절"
     },
     {
@@ -61,6 +78,7 @@ export class GoodsServiceService {
       id: "6",
       brand: "Elfama",
       name: "Fantasia Radar 9",
+      name_ko: "판타시아 레이다 9",
       my: "MY23",
       price: 5280000,
       discount_per: 0.05,
@@ -73,6 +91,7 @@ export class GoodsServiceService {
       id: "7",
       brand: "Elfama",
       name: "Fantasia Radar 8",
+      name_ko: "판타시아 레이다 8",
       my: "MY23",
       price: 4280000,
       discount_per: 0.05,
@@ -85,6 +104,7 @@ export class GoodsServiceService {
       id: "1",
       brand: "SCOTT",
       name: "SCALE RC SL",
+      name_ko: "스케일 RC SL",
       my: "MY23",
       price: 21700000,
       rep_image: "../../assets/images/mtb/scott/SCALE_RC_SL.jpg",
@@ -95,6 +115,7 @@ export class GoodsServiceService {
       id: "2",
       brand: "SCOTT",
       name: "SCALE RC WORLD CUP EVO",
+      name_ko: "스케일 RC WORLD CUP EVO",
       my: "MY23",
       discount_per: 0.2,
       ori_price: 15000000,
@@ -107,6 +128,7 @@ export class GoodsServiceService {
       id: "3",
       brand: "SCOTT",
       name: "SCALE RC WORLD CUP",
+      name_ko: "스케일 RC WORLD CUP",
       my: "MY23",
       discount_per: 0.2,
       ori_price: 11500000,
@@ -119,6 +141,7 @@ export class GoodsServiceService {
       id: "4",
       brand: "SCOTT",
       name: "SCALE RC TEAM ISSUE",
+      name_ko: "스케일 RC TEAM ISSUE",
       my: "MY23",
       discount_per: 0.2,
       ori_price: 6800000,
@@ -131,6 +154,7 @@ export class GoodsServiceService {
       id: "5",
       brand: "SCOTT",
       name: "SCALE RC TEAM",
+      name_ko: "스케일 RC TEAM",
       my: "MY23",
       price: 4850000,
       rep_image: "../../assets/images/mtb/scott/SCALE_RC_TEAM.jpg",
@@ -141,6 +165,7 @@ export class GoodsServiceService {
       id: "1",
       brand: "SCOTT",
       name: "Sub Cross 10",
+      name_ko: "서브크로스 10",
       price: 900000,
       rep_image: "../../assets/images/flower01.jpg"
     },
@@ -149,6 +174,7 @@ export class GoodsServiceService {
       id: "2",
       brand: "SCOTT",
       name: "Sub Cross 20",
+      name_ko: "서브크로스 20",
       price: 600000,
       rep_image: "../../assets/images/flower02.jpg"
     },
@@ -157,6 +183,7 @@ export class GoodsServiceService {
       id: "1",
       brand: "SCOTT",
       name: "ROXTER 16",
+      name_ko: "록스터 16",
       price: 900000,
       rep_image: "../../assets/images/flower01.jpg"
     },
@@ -165,6 +192,7 @@ export class GoodsServiceService {
       id: "2",
       brand: "SCOTT",
       name: "ROXTER WALKER",
+      name_ko: "록스터 워커",
       price: 600000,
       rep_image: "../../assets/images/flower02.jpg"
     },
@@ -173,6 +201,7 @@ export class GoodsServiceService {
       id: "3",
       brand: "SCOTT",
       name: "Scale 24 DISK",
+      name_ko: "스케일 24 DISK",
       price: 900000,
       rep_image: "../../assets/images/flower01.jpg"
     },
@@ -181,6 +210,7 @@ export class GoodsServiceService {
       id: "4",
       brand: "SCOTT",
       name: "Scale 24",
+      name_ko: "스케일 24",
       price: 600000,
       rep_image: "../../assets/images/flower02.jpg"
     },
@@ -189,6 +219,7 @@ export class GoodsServiceService {
       id: "compute_4",
       brand: "Bryton",
       name: "Rider S800",
+      name_ko: "리더 S800",
       price: 540000,
       rep_image: "../../assets/images/accessory/bryton_s800.jpg"
     },
@@ -197,6 +228,7 @@ export class GoodsServiceService {
       id: "compute_5",
       brand: "Bryton",
       name: "Rider S500",
+      name_ko: "리더 S500",
       price: 400000,
       rep_image: "../../assets/images/accessory/bryton_s500.jpg"
     },
@@ -621,5 +653,9 @@ export class GoodsServiceService {
 
   getArticleAll(): Article[] {
     return this.Articles;
+  }
+
+  getArticleByBoardArticle(board_id: string, article_id: number): Article | undefined {
+    return this.Articles.find( a => a.board_id === board_id && a.article_id === article_id);
   }
 }

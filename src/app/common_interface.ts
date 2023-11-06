@@ -21,14 +21,19 @@ export interface Good {
     category_id: string;
     id: string;
     name: string;
+    name_ko?: string;
     brand?: string;
-    rep_image?: string;
-    thumb_images?: string;
-    my?: string;
-    ori_price?: number;
-    price: number;
-    discount_per?: number;
-    size?: string;
+    rep_image?: string;             /** 대표이미지 */
+    thumb_images?: string;          /** 목록 썸네일 */
+    my?: string;                    /** 년식 */
+    ori_price?: number;             /** 원래 가격 */
+    price: number;                  /** 판매가격 */
+    discount_per?: number;          /** 할인율 */
+    meta_info?: string;             /** 검색엔진 키워드 */
+    message?: string;               /** 메시지 */
+    features?: string;              /** 특징's */
+    size?: string;                  /** 사이즈 */
+    specs?: string;                 /** 상세사양 */
     is_new_prod?: string;
     is_in_stock?: string;
     is_sale_discount?: string;

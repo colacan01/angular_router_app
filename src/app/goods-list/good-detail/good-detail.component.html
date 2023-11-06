@@ -15,49 +15,49 @@
         <section id="good_summary">
             <div class="row row-cols-1 row-cols-lg-2 g-4">
                 <div class="col p-5">
-                    <div id="img_container" style="height: 400px;overflow: hidden;"><img src="../../../assets/images/road/bike_addict_rc/addict_rc_30.jpg" style="object-fit: cover;width: 100%;height: 100%;" /></div>
+                    <div id="img_container" style="height: 400px;overflow: hidden;"><img src="{{good?.rep_image}}" style="object-fit: cover;width: 100%;height: 100%;" /></div>
                 </div>
                 <div class="col px-5" style="font-size: .8em;">
-                    <h4>Addict RC 30</h4>
-                    <h6>에딕트 RC 30</h6>
-                    <p class="my-4">가볍고 빠르고 매력적인 디자인을 갖춘 에딕트 RC 30은 당신이 꿈꿔왔던 모든 경쟁적 우위를 제공합니다. 완전히 통합된 케이블과 레이스에 바로 출전할 수 있는 사양을 갖춘 이 자전거는 산 정상을 향해 질주하거나 지역의 크리테리움 경기에서 우승을 하는 데 도움을 줄 것입니다.</p>
+                    <h4>{{good?.name}}</h4>
+                    <div style="min-height: 300px;">
+
+                    <h6 *ngIf="good?.name_ko">{{good?.name_ko}}</h6>
+                    <p class="my-4" *ngIf="good?.message">{{good?.message}}</p>
+                    <ng-container *ngIf="good?.features">
+                    <!-- 제품 특징 속성이 있는 경우 아래 요소 표시 -->
                     <h6>제품 특징</h6>
                     <ul id="list_features" style="padding-left: 16px;">
-                        <li><span style="color: rgb(17, 17, 17);">에딕트 RC 디스크 HMX 카본 프레임</span></li>
-                        <li><span style="color: rgb(17, 17, 17);">에딕트 RC HMX 포크</span></li>
-                        <li><span style="color: rgb(17, 17, 17);">SRAM 라이벌 eTap AXS 디스크 24단 구동계</span></li>
-                        <li><span style="color: rgb(17, 17, 17);">싱크로스 RP2.0 디스크 휠</span></li>
-                        <li><span style="color: rgb(17, 17, 17);">슈발베 ONE 레이스-가드 타이어</span></li>
-                        <li><span style="color: rgb(17, 17, 17);">싱크로스 카본/알로이 파츠</span></li>
+                        <li *ngFor="let feature of getFeatures(good?.features, ';')"><span style="color: rgb(17, 17, 17);">{{feature}}</span></li> 
                     </ul>
+                    </ng-container>
+                    <ng-container *ngIf="good?.size">
+                    <!-- 사이즈 속성이 있는 경우 아래 요소 표시 -->
                     <h6>Size</h6>
                     <ul id="list_size" class="list-inline">
-                        <li class="list-inline-item bike_size">XXS(47)</li>
-                        <li class="list-inline-item bike_size">XS(49)</li>
-                        <li class="list-inline-item bike_size">S(52)</li>
-                        <li class="list-inline-item bike_size">M(54)</li>
-                        <li class="list-inline-item bike_size">L(56)</li>
-                        <li class="list-inline-item bike_size">XL(58)</li>
-                    </ul>
+                        <li class="list-inline-item bike_size" *ngFor="let size of getSizes(good?.size, ';')">{{size}}</li>                    
+                    </ul>   
+                    </ng-container>
+
+                    </div>
                     <div class="d-flex justify-content-between mt-5">
                         <h6>판매 금액</h6>
-                        <h5>6,950,000 원</h5>
+                        <h5>{{good?.price | number }} 원</h5>
                     </div><button class="btn btn-primary w-100 mt-4" type="button">구매하기</button>
                     <div class="d-md-flex gap-2 mt-2"><button class="btn btn-dark w-50" type="button">좋아요</button><button class="btn btn-outline-secondary w-50" type="button">판매하기</button></div>
                 </div>
             </div>
         </section>
-        <section id="good_detail">
+        <section id="good_detail" style="min-height: 400px;font-size: .8rem;">
             <div id="good_detail-1" class="row mt-5">
-                <div class="col-10 mx-auto">
+                <div class="mx-auto">
                     <div>
                         <ul class="nav nav-tabs nav-fill" role="tablist">
                             <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">제품정보</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">상세사양</a></li>
+                            <li *ngIf="good?.specs" class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">상세사양</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">지오메트리</a></li>
                         </ul>
                         <div class="tab-content mt-4">
-                            <div id="tab-1" class="tab-pane active" role="tabpanel" style="min-height: 400px;">
+                            <div id="tab-1" class="tab-pane active" role="tabpanel">
                                 <div id="row_new_articles" class="row row-cols-1 row-cols-lg-2">
                                     <div class="col">
                                         <div class="card" style="border-style: none;">
@@ -85,49 +85,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="tab-2" class="tab-pane" role="tabpanel" style="min-height: 400px;font-size: .8rem;">
+                            
+                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel">
                                 <div id="specs" class="col" style="column-count: 2;">
                                     <ul style="list-style-type: none;padding: 0px;">
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>FRAME</span></div>
-                                            <div class="w-75" style="float: left;"><span>Addict RC Disc HMX / Road Race geometry / Replaceable Derailleur Hanger / Internal cable routing</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>FORK</span></div>
-                                            <div class="w-75" style="float: left;"><span>Addict RC HMX Flatmount Disc / 1 1/4&quot;-1 1/2&quot; Eccentric Carbon steerer</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>REAR DERAILLEUR</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE eTap AXS / 24 Speed Electronic Shift System</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>FRONT DERAILLEUR</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE eTap AXS Electronic Shift System</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>SHIFTERS</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE eTap AXS HRD Shift-Brake System</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>CRANKSET</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE Power meter Crankset /48/35 T</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>BB-SET</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM DUB PF ROAD 86.5</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>CHAIN</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE</span></div>
-                                        </li>
-                                        <li>
-                                            <div class="w-25" style="float: left;"><span>CASSETTE</span></div>
-                                            <div class="w-75" style="float: left;"><span>SRAM FORCE XG1270 / 10-33</span></div>
-                                        </li>
+                                        <li *ngFor="let specs of getSpecs(good?.specs, ';')">
+                                            <div class="w-25" style="float: left;"><span>{{getItemName(specs, '|')}}</span></div>
+                                            <div class="w-75" style="float: left;"><span>{{getItemDesc(specs, '|')}}</span></div>
+                                        </li>                                        
                                     </ul>
                                 </div>
                             </div>
-                            <div id="tab-3" class="tab-pane" role="tabpanel" style="min-height: 400px;">
+
+                            <div id="tab-3" class="tab-pane" role="tabpanel">
                                 <p>Content for tab 3.</p>
                             </div>
                         </div>

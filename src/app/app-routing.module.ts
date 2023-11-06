@@ -15,9 +15,9 @@ import { CartComponent }            from './user/cart/cart.component';
 const routes: Routes = [
   {path: '',                component: MainIntroComponent },
   {path: 'goods_list/:id',  component: GoodsListComponent },
-  {path: 'good_detail/:id', component: GoodDetailComponent },
+  {path: 'good_detail/:category/:id', component: GoodDetailComponent },
   {path: 'contents_list',   component: ContentsListComponent },                         /** 게시판 ID를 파라매터로 넘겨줘야 함 */
-  {path: 'content_view',    component: ContentViewComponent },
+  {path: 'content_view/:board/:id',    component: ContentViewComponent },
   {path: 'content_write',   component: ContentWriteComponent },
   {path: 'register',        component: RegisterComponent },
   {path: 'user',            component: UserComponent,
