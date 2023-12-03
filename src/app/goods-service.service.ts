@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Category, SubCategory, Good, Order, Article } from './common_interface';
 
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GoodsServiceService {
+  
   Goods: Good[] = [
     {
       category_id: "road",
@@ -608,7 +613,7 @@ export class GoodsServiceService {
       // replies?: Article_Reply[];
     },
   ]
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getSubCategory(category_id: string): Category | undefined {
     return this.SubCategories.find( a => a.id === category_id);

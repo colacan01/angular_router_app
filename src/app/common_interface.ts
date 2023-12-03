@@ -1,5 +1,5 @@
 export interface Category {
-    c_group?: string;
+    c_group?: string;               /* 카테고리 그룹: header의 메뉴 그룹 정의 */
     id: string;
     name: string;
     target_url?: string;

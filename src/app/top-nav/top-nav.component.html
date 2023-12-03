@@ -9,17 +9,17 @@
             <ul class="navbar-nav flex-grow-1 justify-content-start">
                 <ng-container *ngFor="let category of categories">
 
-                    <li *ngIf="category.c_group=='goods'" class="nav-item {{category.clss}}" style="margin-right: 2rem;">
-                        <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.name}}</a>
+                    <li *ngIf="category.category_group?.category_group_nm =='goods'" class="nav-item {{category.category_css_class}}" style="margin-right: 2rem;">
+                        <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.category_nm}}</a>
                         <ul class="dropdown-menu" *ngIf="category.subcategories">
                             <li *ngFor="let subcategory of category.subcategories">
-                                <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.id]">
-                                    <i class="bi {{subcategory.icon_clss}} me-4" *ngIf="subcategory.icon_clss" ></i>{{subcategory.name}}
+                                <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.category_id]">
+                                    <i class="bi {{subcategory.icon_css_class}} me-4" *ngIf="subcategory.icon_css_class" ></i>{{subcategory.category_nm}}
                                 </a>
                             </li>                        
                         </ul>   
 
-                        <a class="nav-link text-dark" [routerLink]="[category.target_url]" *ngIf="!category.subcategories">{{category.name}}</a>
+                        <a class="nav-link text-dark" [routerLink]="[category.target_url]" *ngIf="!category.subcategories">{{category.category_nm}}</a>
                     </li>                            
 
                 </ng-container>
@@ -27,17 +27,17 @@
             <ul class="navbar-nav flex-grow-1 justify-content-end ms-auto">
                 <ng-container *ngFor="let category of categories">
 
-                    <li *ngIf="category.c_group=='users'" class="nav-item {{category.clss}}" style="margin-right: 2rem;">
-                        <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.name}}</a>
+                    <li *ngIf="category.category_group?.category_group_nm=='users'" class="nav-item {{category.category_css_class}}" style="margin-right: 2rem;">
+                        <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.category_nm}}</a>
                         <ul class="dropdown-menu  dropdown-menu-end" *ngIf="category.subcategories">
                             <li *ngFor="let subcategory of category.subcategories">
-                                <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.id]">
-                                    <i class="bi {{subcategory.icon_clss}} me-4" *ngIf="subcategory.icon_clss" ></i>{{subcategory.name}}
+                                <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.category_id]">
+                                    <i class="bi {{subcategory.icon_css_class}} me-4" *ngIf="subcategory.icon_css_class" ></i>{{subcategory.category_nm}}
                                 </a>
                             </li>                        
                         </ul>   
 
-                        <a class="nav-link text-dark" [routerLink]="[category.target_url]" *ngIf="!category.subcategories">{{category.name}}</a>
+                        <a class="nav-link text-dark" [routerLink]="[category.target_url]" *ngIf="!category.subcategories">{{category.category_nm}}</a>
                     </li>  
 
                 </ng-container>

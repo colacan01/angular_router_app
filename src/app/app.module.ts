@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { ContentsListComponent } from './contents-list/contents-list.component';
 import { GoodsListComponent } from './goods-list/goods-list.component';
@@ -38,7 +40,8 @@ import { ContentWriteComponent } from './contents-list/content-write/content-wri
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
