@@ -15,13 +15,13 @@
         <section id="good_summary">
             <div class="row row-cols-1 row-cols-lg-2 g-4">
                 <div class="col p-5">
-                    <div id="img_container" style="height: 400px;overflow: hidden;"><img src="{{good?.rep_image}}" style="object-fit: cover;width: 100%;height: 100%;" /></div>
+                    <div id="img_container" style="height: 400px;overflow: hidden;"><img src="{{good?.repr_image_url}}" style="object-fit: cover;width: 100%;height: 100%;" /></div>
                 </div>
                 <div class="col px-5" style="font-size: .8em;">
-                    <h4>{{good?.name}}</h4>
+                    <h4>{{good?.good_nm}}</h4>
                     <div style="min-height: 300px;">
 
-                    <h6 *ngIf="good?.name_ko">{{good?.name_ko}}</h6>
+                    <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
                     <p class="my-4" *ngIf="good?.message">{{good?.message}}</p>
                     <ng-container *ngIf="good?.features">
                     <!-- 제품 특징 속성이 있는 경우 아래 요소 표시 -->
@@ -30,18 +30,18 @@
                         <li *ngFor="let feature of getFeatures(good?.features, ';')"><span style="color: rgb(17, 17, 17);">{{feature}}</span></li> 
                     </ul>
                     </ng-container>
-                    <ng-container *ngIf="good?.size">
+                    <ng-container *ngIf="good?.sizes">
                     <!-- 사이즈 속성이 있는 경우 아래 요소 표시 -->
                     <h6>Size</h6>
                     <ul id="list_size" class="list-inline">
-                        <li class="list-inline-item bike_size" *ngFor="let size of getSizes(good?.size, ';')">{{size}}</li>                    
+                        <li class="list-inline-item bike_size" *ngFor="let size of getSizes(good?.sizes, ';')">{{size}}</li>                    
                     </ul>   
                     </ng-container>
 
                     </div>
                     <div class="d-flex justify-content-between mt-5">
                         <h6>판매 금액</h6>
-                        <h5>{{good?.price | number }} 원</h5>
+                        <!-- <h5>{{good?.price | number }} 원</h5> -->
                     </div><button class="btn btn-primary w-100 mt-4" type="button">구매하기</button>
                     <div class="d-md-flex gap-2 mt-2"><button class="btn btn-dark w-50" type="button">좋아요</button><button class="btn btn-outline-secondary w-50" type="button">판매하기</button></div>
                 </div>

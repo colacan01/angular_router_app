@@ -22,4 +22,53 @@ export interface Category {
     category_group?: Category_Group;
     parent_category?: Category;
     subcategories?: Category[];    
+    goods?: Good[];
+}
+
+export interface Supplier {
+    supplier_id: string;
+    supplier_nm: string;
+    biz_no?: string;
+    addr1?: string;
+    addr2?: string;
+    zipno?: string;
+    repr_telno?: string;
+    contact_nm?: string;
+    contact_telno?: string;
+    use_yn: number;
+    brands?: Brand[];
+}
+
+export interface Brand {
+    brand_id: string;
+    supplier_id: string;
+    brand_nm: string;
+    brand_logo_url?: string;
+    use_yn: number;
+    supplier?: Supplier;
+    goods?: Good[];
+}
+
+export interface Good {
+    good_id: string;
+    category_id: string;
+    good_link_url: string;
+    good_nm: string;
+    good_nm_ko: string;
+    brand_id: string;
+    repr_image_url?: string;
+    thumb_image_url?: string;
+    made_year?: string;
+    meta_info?: string;
+    message?: string;
+    features?: string;
+    sizes?: string;
+    specs?: string;
+    is_new_prod?: string;
+    is_in_stock?: string;
+    is_sale_discount?: string;
+    is_sold_out?: string;
+    category?: Category;
+    brand?: Brand;
+    // price_histories?: price_history[];
 }

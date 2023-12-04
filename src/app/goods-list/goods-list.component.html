@@ -2,12 +2,12 @@
 <main>
     <div class="container mb-3">        
 
-        <section id="banner" class="mb-4" style="position: relative;" *ngIf="subcategory?.banner_img">    
+        <section id="banner" class="mb-4" style="position: relative;" >    
             <div style="height: 300px;overflow: hidden;">
-                <img class="category_banner w-100" src="{{subcategory?.banner_img}}">
+                <img class="category_banner w-100" src="{{subcategory?.banner_image_url}}">
             </div>
             <div style="position: absolute;top: 43%;left: 3%;">
-                <h2 style="font-weight: bold;text-shadow: 2px 2px 4px var(--bs-emphasis-color);color: var(--bs-body-bg);">{{subcategory?.name}}</h2>
+                <h2 style="font-weight: bold;text-shadow: 2px 2px 4px var(--bs-emphasis-color);color: var(--bs-body-bg);">{{subcategory?.category_nm}}</h2>
             </div>
         </section>
 
@@ -17,7 +17,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">자전거</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{subcategory?.name}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{subcategory?.category_nm}}</li>
                     </ol>
                 </nav>
             </div>

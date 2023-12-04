@@ -1,8 +1,8 @@
 import { Component, inject, OnInit  }           from '@angular/core';
 import { ActivatedRoute }                       from '@angular/router';
-import { GoodsServiceService }                  from '../goods-service.service';
-import { SubCategory, Good }                    from '../common_interface';
-import { GoodsCardComponent }                   from './goods-card/goods-card.component';
+import { Category, Good }                       from '../interface_category';
+import { HttpDataServiceService }               from '../http-data-service.service';
+
 
 @Component({
   selector: 'app-goods-list',
@@ -12,15 +12,13 @@ import { GoodsCardComponent }                   from './goods-card/goods-card.co
 
 export class GoodsListComponent implements OnInit {
   
-  categoryId: string;  
-  subcategory?:  SubCategory;
-  Goods:      Good[] = [];   /** 상품 리스트 변수 */
+  categoryId:     string;  
+  subcategory?:   Category;
+  Goods:          Good[] = [];   /** 상품 리스트 변수 */
 
-  // goodsService: GoodsServiceService = inject(GoodsServiceService);
-  
   constructor(
     private route: ActivatedRoute,
-    private goodsService: GoodsServiceService
+    private httpDataService: HttpDataServiceService
     ) 
     { 
       this.categoryId = '';
@@ -29,8 +27,8 @@ export class GoodsListComponent implements OnInit {
       this.route.params.subscribe(
         params => {
           this.categoryId   = String(params['id']);
-          this.Goods        = this.goodsService.getGoodsByCategory(this.categoryId);          
-          this.subcategory  = this.goodsService.getSubCategory(this.categoryId);
+          this.httpDataService.getGoodsByCategory(this.categoryId).subscribe(a => this.Goods = a);          
+          this.httpDataService.geCategory(this.categoryId).subscribe(a => this.subcategory = a);
           console.log('values: ', this.categoryId);        
         }
       );

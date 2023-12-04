@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute }                       from '@angular/router';
-import { GoodsServiceService }                  from '../goods-service.service';
-import { Category, Good }                       from '../common_interface';
-import { GoodsCardComponent }                   from '../goods-list/goods-card/goods-card.component';
+import { Category, Good } from '../interface_category';
+import { HttpDataServiceService } from '../http-data-service.service';
 
 @Component({
   selector: 'app-main-intro',
@@ -17,7 +16,7 @@ export class MainIntroComponent {
   
   constructor(
     private route: ActivatedRoute,
-    private goodsService: GoodsServiceService
+    private httpDataService: HttpDataServiceService
     ) 
     { 
       this.categoryId = '';
@@ -25,9 +24,10 @@ export class MainIntroComponent {
       /** 아래 코드를 넣어야 같은 화면에서 리프레쉬 됨 */
       this.route.params.subscribe(
         params => {
-          this.Goods        = this.goodsService.getGoodsNewProd();
-          this.PopGoods     = this.goodsService.getGoodsPop();          
-          // this.category     = this.goodsService.getCategory(this.categoryId);
+
+          this.httpDataService.getGoodsNewProd().subscribe(a => this.Goods = a);          
+          this.httpDataService.getGoodPop().subscribe(a => this.PopGoods = a);
+
           console.log('values: ', this.categoryId);        
         }
       );
