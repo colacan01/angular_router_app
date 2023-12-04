@@ -70,5 +70,15 @@ export interface Good {
     is_sold_out?: string;
     category?: Category;
     brand?: Brand;
-    // price_histories?: price_history[];
+    price_history?: Price_History;
+}
+
+export interface Price_History {
+    good_id: string;
+    price_start_date: Date;
+    price_end_date?: Date;
+    base_price?: number;
+    sale_price?: number;
+    discount_per?: number;
+    chg_reason?: string;
 }
