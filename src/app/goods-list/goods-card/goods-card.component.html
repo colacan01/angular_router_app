@@ -22,7 +22,7 @@
             <p *ngIf="!good?.price_history?.base_price" class="good_item_ori_price invisible" > 원</p>
             <div class="d-flex justify-content-between">
                 <span *ngIf="good?.price_history?.discount_per" class="good_item_disc_per">{{good?.price_history?.discount_per | number }}%</span>
-                <span class="good_item_price">{{good?.price_history?.sale_price| number }} 원</span>
+                <span *ngIf="good?.price_history?.sale_price"   class="good_item_price">{{good?.price_history?.sale_price| number }} 원</span>
             </div>
         </div>
     </div>
