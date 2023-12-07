@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'user',            component: UserComponent,
    children: [
     { path: 'login',          component: LoginComponent },    
+    // { path: 'cart?user_id=:user_id',  component: CartComponent },                                 /** 사용자 ID를 파라매터로 넘겨줘야 함 */
     { path: 'cart/:user_id',  component: CartComponent },                                 /** 사용자 ID를 파라매터로 넘겨줘야 함 */
    ],
   },

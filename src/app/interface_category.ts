@@ -81,4 +81,5 @@ export interface Price_History {
     sale_price?: number;
     discount_per?: number;
     chg_reason?: string;
+    good: Good;
 }

@@ -28,6 +28,13 @@ export class CartComponent implements OnInit {
           console.log('values: ', this.User_Id);        
         }
       );
+      // this.route.queryParams.subscribe(
+      //   params => {
+      //     this.User_Id   = String(params['user_id']);
+      //     this.Orders    = this.goodsService.getOrdersAll(this.User_Id);          
+      //     console.log('values: ', this.User_Id);        
+      //   }
+      // );
     }
 
     ngOnInit() {}      

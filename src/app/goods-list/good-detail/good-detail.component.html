@@ -22,28 +22,49 @@
                     <div style="min-height: 300px;">
 
                     <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
-                    <p class="my-4" *ngIf="good?.message">{{good?.message}}</p>
+                    <p class="my-4" *ngIf="good?.message" innerHTML="{{good?.message }}"></p>
                     <ng-container *ngIf="good?.features">
                     <!-- 제품 특징 속성이 있는 경우 아래 요소 표시 -->
                     <h6>제품 특징</h6>
                     <ul id="list_features" style="padding-left: 16px;">
-                        <li *ngFor="let feature of getFeatures(good?.features, ';')"><span style="color: rgb(17, 17, 17);">{{feature}}</span></li> 
+                        <ng-container *ngFor="let feature of getFeatures(good?.features, ';')">
+                        <li *ngIf="feature"><span style="color: rgb(17, 17, 17);">{{feature}}</span></li> 
+                        </ng-container>
                     </ul>
                     </ng-container>
                     <ng-container *ngIf="good?.sizes">
                     <!-- 사이즈 속성이 있는 경우 아래 요소 표시 -->
                     <h6>Size</h6>
                     <ul id="list_size" class="list-inline">
-                        <li class="list-inline-item bike_size" *ngFor="let size of getSizes(good?.sizes, ';')">{{size}}</li>                    
+                        <ng-container *ngFor="let size of getSizes(good?.sizes, ';')">
+                        <li class="list-inline-item bike_size" *ngIf="size">{{size}}</li>                    
+                        </ng-container>
                     </ul>   
                     </ng-container>
-
                     </div>
+                    
+                    <ng-container *ngIf="!good?.price_history?.base_price">
                     <div class="d-flex justify-content-between mt-5">
                         <h6>판매 금액</h6>
-                        <!-- <h5>{{good?.price | number }} 원</h5> -->
-                    </div><button class="btn btn-primary w-100 mt-4" type="button">구매하기</button>
-                    <div class="d-md-flex gap-2 mt-2"><button class="btn btn-dark w-50" type="button">좋아요</button><button class="btn btn-outline-secondary w-50" type="button">판매하기</button></div>
+                        <h5>{{good?.price_history?.sale_price | number }} 원</h5>
+                    </div>
+                    </ng-container>
+                        
+                    <ng-container *ngIf="good?.price_history?.base_price">
+                    <div class="d-flex justify-content-between mt-5 mb-1">
+                        <h6 class="good_item_ori_price">판매 금액</h6>
+                        <h5 class="good_item_ori_price">{{good?.price_history?.base_price | number }} 원</h5>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6>할인 판매 금액<span class="good_item_disc_per" *ngIf="good?.price_history?.discount_per"> {{good?.price_history?.discount_per | number }}%</span></h6>
+                        <h5>{{good?.price_history?.sale_price | number }} 원</h5>
+                    </div>
+                    </ng-container>
+
+                    <button class="btn btn-primary w-100 mt-4" type="button">구매하기</button>
+                    <div class="d-md-flex gap-2 mt-2">
+                        <button class="btn btn-dark w-50" type="button">좋아요</button><button class="btn btn-outline-secondary w-50" type="button">판매하기</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -84,9 +105,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel">
+                            </div>                            
+                            <!-- <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel">
                                 <div id="specs" class="col" style="column-count: 2;">
                                     <ul style="list-style-type: none;padding: 0px;">
                                         <li *ngFor="let specs of getSpecs(good?.specs, ';')">
@@ -95,6 +115,8 @@
                                         </li>                                        
                                     </ul>
                                 </div>
+                            </div> -->
+                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel" innerHTML="{{good?.specs}}">                                
                             </div>
 
                             <div id="tab-3" class="tab-pane" role="tabpanel">

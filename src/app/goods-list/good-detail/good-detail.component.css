@@ -1,0 +1,21 @@
+.bike_size {
+  min-width: 40px;
+  background: #e6e5e5;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.good_item_ori_price {
+  text-align: right;
+  text-decoration: line-through;
+  color: var(--bs-gray-400);
+  font-size: .75rem;
+  margin-bottom: 0px;
+}
+
+.good_item_disc_per {
+  color: rgb(239,116,175);
+  font-weight: bold;
+  font-size: 0.75rem;
+  }

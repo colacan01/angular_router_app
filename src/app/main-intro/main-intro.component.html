@@ -93,9 +93,11 @@
                 </div>
 
                 <div id="goods_new_items" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
-                    <div class="col" *ngFor="let Good of Goods">
-                        <app-goods-card [good]="Good"></app-goods-card>
+                    <ng-container *ngFor="let Good of Goods; index as i">
+                    <div class="col" *ngIf="i < 10">         
+                        <app-goods-card [good]="Good"></app-goods-card>                        
                     </div>
+                    </ng-container>
                 </div>
 
             </section>
@@ -109,8 +111,10 @@
                 </div>
                 
                 <div id="goods_pop_items" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4">
-                    <div class="col" *ngFor="let Good of PopGoods">
+                    <div class="col" *ngFor="let Good of PopGoods; index as i">
+                        <ng-container *ngIf="i < 10">
                         <app-goods-card [good]="Good"></app-goods-card>
+                        </ng-container>
                     </div>
                 </div>
                 
