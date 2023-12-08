@@ -83,3 +83,11 @@ export interface Price_History {
     chg_reason?: string;
     good: Good;
 }
+
+export interface Goods_Path {
+    level_root: string;
+    level_1_id?: string;
+    level_1_name?: string;
+    level_2_id?: string;
+    level_2_name?: string;
+}

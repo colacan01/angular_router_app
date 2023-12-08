@@ -19,3 +19,22 @@
   font-weight: bold;
   font-size: 0.75rem;
   }
+
+tr:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  height: 32px;
+}
+
+tr td:first-child {
+  padding-left: 10px;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

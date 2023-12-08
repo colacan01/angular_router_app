@@ -1,6 +1,6 @@
 import { Component, OnInit }                  from '@angular/core';
 import { ActivatedRoute }                     from '@angular/router';
-import { Good }                               from '../../interface_category';
+import { Good, Goods_Path }                               from '../../interface_category';
 import { HttpDataServiceService }             from '../../http-data-service.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class GoodDetailComponent implements OnInit {
   category_id:  string;
   good_id:      string;
   good?:        Good;
+  good_path?:   Goods_Path;
   
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +27,8 @@ export class GoodDetailComponent implements OnInit {
         params => {
           this.category_id    = String(params['category']);
           this.good_id        = String(params['id']);
-          this.httpDataService.getGood(this.good_id).subscribe(a => this.good = a);                  
+          this.httpDataService.getGood(this.good_id).subscribe(a => this.good = a);
+          this.httpDataService.getGoodsPath('Good', this.good_id).subscribe(a => this.good_path = a);
           console.log('values: ', this.good_id);        
         }
       );

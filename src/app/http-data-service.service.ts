@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Category, Good } from './interface_category';
+import { Category, Good, Goods_Path } from './interface_category';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -105,6 +105,14 @@ export class HttpDataServiceService {
   getGood(GoodId: string): Observable<Good>  {
     this.targetAPI = 'good/getGood';
     return this.http.get<Good>(this.baseURL + this.targetAPI + '/' + GoodId)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  getGoodsPath(QueryType: string, GoodId: string): Observable<Goods_Path> {
+    this.targetAPI = 'good/getGoodsPath';
+    return this.http.get<Goods_Path>(this.baseURL + this.targetAPI + '/'+ QueryType +'/?FindKey=' + GoodId)
             .pipe(
               catchError(this.ErrorHandler)
             );      

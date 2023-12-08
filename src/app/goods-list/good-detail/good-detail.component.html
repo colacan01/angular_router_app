@@ -5,9 +5,9 @@
             <div class="row">
                 <div class="col" style="font-size: .7rem;">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
-                        <li class="breadcrumb-item"><a href="#"><span>Bicycle</span></a></li>
-                        <li class="breadcrumb-item"><a href="#"><span>ROAD</span></a></li>
+                        <li class="breadcrumb-item"><a href="#"><span>{{good_path?.level_root}}</span></a></li>
+                        <li class="breadcrumb-item" *ngIf="good_path?.level_1_name"><a href="#"><span>{{good_path?.level_1_name}}</span></a></li>
+                        <li class="breadcrumb-item" *ngIf="good_path?.level_2_name"><a href="#"><span>{{good_path?.level_2_name}}</span></a></li>
                     </ol>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                                     </ul>
                                 </div>
                             </div> -->
-                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel" innerHTML="{{good?.specs}}">                                
+                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel" innerHTML="{{good?.specs}}" align="center">                                
                             </div>
 
                             <div id="tab-3" class="tab-pane" role="tabpanel">

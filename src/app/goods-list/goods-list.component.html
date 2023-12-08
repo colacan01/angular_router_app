@@ -19,9 +19,9 @@
             <div class="container" style="font-size: .7rem; padding-left: 0px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">자전거</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{subcategory?.category_nm}}</li>
+                        <li class="breadcrumb-item"><a href="#"><span>{{good_path?.level_root}}</span></a></li>
+                        <li class="breadcrumb-item" *ngIf="good_path?.level_1_name"><a href="#"><span>{{good_path?.level_1_name}}</span></a></li>
+                        <li class="breadcrumb-item" *ngIf="good_path?.level_2_name"><a href="#"><span>{{good_path?.level_2_name}}</span></a></li>
                     </ol>
                 </nav>
             </div>
