@@ -91,3 +91,16 @@ export interface Goods_Path {
     level_2_id?: string;
     level_2_name?: string;
 }
+
+export interface Article {
+    article_id: string;
+    board_id: string;
+    user_id: string;
+    article_subject: string;
+    article_body: string;
+    article_read_count: number;
+    article_write_datetime: Date;
+    article_recommend_count: number;
+    article_update_datetime: Date;
+    category: Category;
+}

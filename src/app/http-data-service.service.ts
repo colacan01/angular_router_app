@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Category, Good, Goods_Path } from './interface_category';
+import { Category, Good, Goods_Path, Article } from './interface_category';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -117,4 +117,24 @@ export class HttpDataServiceService {
               catchError(this.ErrorHandler)
             );      
   }
+
+  getArticles(BoardId: string): Observable<Article[]> {
+    this.targetAPI = 'content/' + BoardId + '/getArticles';
+    return this.http.get<Article[]>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  getArticle(ArticleId: string): Observable<Article> {
+    this.targetAPI = 'content/getArticle?Article_Id=' + ArticleId ;
+    console.log(this.targetAPI);
+    return this.http.get<Article>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  //TODO: 게시판 목록 조회 서비스 개발 필요
 }
+

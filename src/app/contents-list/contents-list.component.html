@@ -19,7 +19,6 @@
             <table class="table">
                 <thead class="caption-top">
                     <tr>
-                        <th style="background: #e4e4e4;text-align: center;">번호</th>
                         <th style="background: #e4e4e4;text-align: center;">작성자</th>
                         <th style="background: #e4e4e4;">제목</th>
                         <th class="text-center" style="background: #e4e4e4;">조회건수</th>
@@ -29,12 +28,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let Article of Articles">
-                        <td>{{Article.article_id}}</td>
                         <td>{{Article.user_id}}</td>
                         <td><a [routerLink]="['/content_view/notice/', Article.article_id]">{{Article.article_subject}}</a></td>
-                        <td style="text-align: right;">{{Article.read_count}}</td>
-                        <td style="text-align: right;">{{Article.write_date | date: 'yyyy-MM-dd'}}</td>
-                        <td style="text-align: center;">{{Article.recommend_count}}</td>
+                        <td style="text-align: right;">{{Article.article_read_count}}</td>
+                        <td style="text-align: right;">{{Article.article_write_datetime | date: 'yyyy-MM-dd'}}</td>
+                        <td style="text-align: center;">{{Article.article_recommend_count}}</td>
                     </tr>
                 </tbody>
             </table>

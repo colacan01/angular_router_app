@@ -4,18 +4,23 @@
 <main>
     <div class="container">
         <section id="board_class">
-            <h3 id="board_class_name" class="text-center my-4">공지사항</h3>
+            <h3 id="board_class_name" class="text-center my-4">{{article?.category?.category_nm}}</h3>
             <hr style="margin-bottom: 4px;" />
         </section>
         <section id="article_header">
             <p id="article_subject" class="fw-bold">{{article?.article_subject}}</p>
             <div class="d-flex">
-                <div class="col"><span id="author" style="display: block;font-size: .8rem;font-weight: bold;">콜라캔</span><i class="far fa-eye" style="font-size: .7rem;margin-right: 5px;"></i><span id="read_count" style="font-size: .7rem;">{{article?.read_count}} 회</span><i class="far fa-clock" style="font-size: 0.7rem;margin: 0px;margin-left: 20px;margin-right: 5px;"></i><span id="write_date" style="display: inline;font-size: .7rem;">{{article?.write_date | date: 'yyyy-MM-dd'}}</span></div>
+                <div class="col">
+                    <span id="author" style="display: block;font-size: .8rem;font-weight: bold;">콜라캔</span><i class="far fa-eye" style="font-size: .7rem;margin-right: 5px;"></i>
+                    <span id="read_count" style="font-size: .7rem;">{{article?.article_read_count}} 회</span><i class="far fa-clock" style="font-size: 0.7rem;margin: 0px;margin-left: 20px;margin-right: 5px;"></i>
+                    <span id="write_date" style="display: inline;font-size: .7rem;">{{article?.article_write_datetime | date: 'yyyy-MM-dd'}}</span>
+                </div>
             </div>
             <hr style="margin-top: 2px;" />
         </section>
-        <section id="article_body">
-            {{article?.article_body}}
+        <section id="article_body">            
+            <div [innerHTML]="article?.article_body">
+            </div>
             <hr style="margin-top: 15px;" />
         </section>
         <section id="article_nav">
