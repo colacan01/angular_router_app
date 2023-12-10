@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Category, Good, Goods_Path, Article } from './interface_category';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -128,7 +128,6 @@ export class HttpDataServiceService {
 
   getArticle(ArticleId: string): Observable<Article> {
     this.targetAPI = 'content/getArticle?Article_Id=' + ArticleId ;
-    console.log(this.targetAPI);
     return this.http.get<Article>(this.baseURL + this.targetAPI)
             .pipe(
               catchError(this.ErrorHandler)
@@ -136,5 +135,30 @@ export class HttpDataServiceService {
   }
 
   //TODO: 게시판 목록 조회 서비스 개발 필요
+  getBoards(): Observable<Category[]> {
+    this.targetAPI = 'content/getBoards';
+    return this.http.get<Category[]>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  postArticle(article: Article): Observable<Article> {
+    this.targetAPI = 'content/postNewArticle';
+    
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    
+    console.log("target url :", this.baseURL + this.targetAPI);
+    console.log("postArticle :", article);
+
+    return this.http.post<Article>(this.baseURL + this.targetAPI, article, httpHeader)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+  }
 }
 
