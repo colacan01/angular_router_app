@@ -134,6 +134,28 @@ export class HttpDataServiceService {
             );      
   }
 
+  getLeadArticle(BoardId: string, ArticleId: string): Observable<Article> {
+    this.targetAPI = 'content/' + BoardId + '/getLeadArticle?Article_Id=' + ArticleId ;
+
+    console.log('lead: ', this.targetAPI);
+
+    return this.http.get<Article>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  getLagArticle(BoardId: string, ArticleId: string): Observable<Article> {
+    this.targetAPI = 'content/' + BoardId + '/getLagArticle?Article_Id=' + ArticleId ;
+
+    console.log('lag: ', this.targetAPI);
+
+    return this.http.get<Article>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
   //TODO: 게시판 목록 조회 서비스 개발 필요
   getBoards(): Observable<Category[]> {
     this.targetAPI = 'content/getBoards';
@@ -152,9 +174,6 @@ export class HttpDataServiceService {
       })
     };
     
-    console.log("target url :", this.baseURL + this.targetAPI);
-    console.log("postArticle :", article);
-
     return this.http.post<Article>(this.baseURL + this.targetAPI, article, httpHeader)
             .pipe(
               catchError(this.ErrorHandler)

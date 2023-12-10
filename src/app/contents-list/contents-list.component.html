@@ -29,7 +29,7 @@
                 <tbody>
                     <tr *ngFor="let Article of Articles">
                         <td>{{Article.user_id}}</td>
-                        <td><a [routerLink]="['/content_view/notice/', Article.article_id]">{{Article.article_subject}}</a></td>
+                        <td><a [routerLink]="['/content_view/'+ board_id +'/', Article.article_id]">{{Article.article_subject}}</a></td>
                         <td style="text-align: right;">{{Article.article_read_count}}</td>
                         <td style="text-align: right;">{{Article.article_write_datetime | date: 'yyyy-MM-dd'}}</td>
                         <td style="text-align: center;">{{Article.article_recommend_count}}</td>

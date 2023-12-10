@@ -94,6 +94,7 @@ export interface Goods_Path {
 
 export interface Article {
     article_id?: string;
+    article_seq: number;
     board_id: string;
     user_id: string;
     article_subject: string;

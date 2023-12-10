@@ -1,5 +1,5 @@
 import { Component }                            from '@angular/core';
-import { ActivatedRoute }                       from '@angular/router';
+import { ActivatedRoute, Route, Router }                from '@angular/router';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Article, Category }                    from '../../interface_category';
 import { HttpDataServiceService }               from '../../http-data-service.service';
@@ -26,28 +26,27 @@ export class ContentWriteComponent {
   });
   
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private httpDataService: HttpDataServiceService,
     private formB: FormBuilder
   ) {
     this.route.params.subscribe(
       params => {
-        this.httpDataService.getBoards().subscribe( a => this.Boards = a );                  
+        this.httpDataService.getBoards().subscribe( a => this.Boards = a );        
       }
     );
   }
 
   onSubmit(): void {
-    console.log('write_from: ',           this.write_form.value);
-    // console.log('form_board_id: ',        this.write_form.get('form_board_id')?.value);
-    // console.log('form_article_subject: ', this.write_form.get('form_article_subject')?.value);
-    // console.log('form_article_body: ',    this.write_form.get('form_article_body')?.value);
+    // console.log('write_from: ',           this.write_form.value);
+    // console.log('board_id: ',        this.write_form.get('board_id')?.value);
+    // console.log('article_subject: ', this.write_form.get('article_subject')?.value);
+    // console.log('article_body: ',    this.write_form.get('article_body')?.value);
 
-    //TODO: post방식으로 전달하기
+    //TODO: rest api에서 리턴하는 http 응답코드 체크해서 정상/오류 처리
     this.httpDataService.postArticle(this.write_form.value as Article).subscribe( a => {
-      console.log('posting 처리 후');
-      console.log('리턴값 확인', a);
-      
+      this.router.navigate(['contents_list/' +  String(this.write_form.get('board_id')?.value)]);   
       });
   }
 }
