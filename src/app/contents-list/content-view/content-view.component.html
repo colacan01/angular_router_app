@@ -28,14 +28,14 @@
                 <i class="fa fa-chevron-up" style="margin-right: 5px;font-size: 0.7rem;color: var(--bs-gray-700);"></i>
                 <span id="next_article" style="font-size: .6rem;color: var(--bs-gray-700);margin-right: 17px;">다음글</span>
                 <span id="next_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view/'+ lead_article.board_id +'/', lead_article.article_id]">{{lead_article?.article_subject}}</a></span>
-                <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lead_article?.article_recommend_count}}</span>
+                <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lead_article?.article_read_count}}</span>
                 <span id="next_article_write_date" class="float-end" style="font-size: .7rem;line-height: 24px;">{{lead_article?.article_write_datetime}}</span>
             </div>
             <div *ngIf="lag_article">
                 <i class="fa fa-chevron-down" style="margin-right: 5px;font-size: 0.7rem;color: var(--bs-gray-700);"></i>
                 <span id="prev_article" style="font-size: .6rem;color: var(--bs-gray-700);margin-right: 17px;">이전글</span>
                 <span id="prev_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view/'+ lag_article.board_id +'/', lag_article.article_id]">{{lag_article?.article_subject}}</a></span>
-                <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lag_article?.article_recommend_count}}</span>
+                <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lag_article?.article_read_count}}</span>
                 <span id="prev_article_write_date" class="float-end" style="font-size: .7rem;line-height: 24px;">{{lag_article?.article_write_datetime}}</span>
             </div>
         </section>
