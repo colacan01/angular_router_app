@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Category, Good, Goods_Path, Article } from './interface_category';
+import { Category, Good, Goods_Path, Article, Reply } from './interface_category';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -53,8 +53,6 @@ export class HttpDataServiceService {
 
 
   geCategory(CategoryId?: string): Observable<Category>  {
-    
-    
     if(CategoryId != null) {
       this.targetAPI = 'base/getCategory';
       CategoryId = '?CategoryId=' + CategoryId
@@ -126,6 +124,14 @@ export class HttpDataServiceService {
             );      
   }
 
+  getNewsArticles(): Observable<Article[]> {
+    this.targetAPI = 'content/getnewsarticles';
+    return this.http.get<Article[]>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
   getArticle(ArticleId: string): Observable<Article> {
     this.targetAPI = 'content/getArticle?Article_Id=' + ArticleId ;
     return this.http.get<Article>(this.baseURL + this.targetAPI)
@@ -175,6 +181,23 @@ export class HttpDataServiceService {
     };
     
     return this.http.post<Article>(this.baseURL + this.targetAPI, article, httpHeader)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+  }
+
+  postReply(reply: Reply): Observable<Reply> {
+    this.targetAPI = 'content/postReply';
+    
+    console.log(reply);
+
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    
+    return this.http.post<Reply>(this.baseURL + this.targetAPI, reply, httpHeader)
             .pipe(
               catchError(this.ErrorHandler)
             );

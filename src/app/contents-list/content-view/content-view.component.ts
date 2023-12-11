@@ -1,6 +1,7 @@
 import { Component }                            from '@angular/core';
-import { ActivatedRoute }                       from '@angular/router';
-import { Article }                              from '../../interface_category';
+import { ActivatedRoute, Route, Router }        from '@angular/router';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Article, Reply }                              from '../../interface_category';
 import { HttpDataServiceService }               from '../../http-data-service.service';
 
 @Component({
@@ -15,9 +16,21 @@ export class ContentViewComponent {
   lead_article?: Article;
   lag_article?: Article;
 
+  reply_form = this.formB.group({  
+    reply_id: 'temp',  
+    article_id: '',  
+    reply_user_id: 'dev',
+    reply_body: ['', Validators.required],
+    reply_write_datetime: null,
+    reply_update_datetime: null,
+    use_yn: '1',
+  });
+
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
-    private httpDataService: HttpDataServiceService
+    private httpDataService: HttpDataServiceService,
+    private formB: FormBuilder
     ) 
     { 
       this.board_id = '';
@@ -38,11 +51,25 @@ export class ContentViewComponent {
           this.httpDataService.getArticle(this.article_id).subscribe( a => this.article = a);     
           this.httpDataService.getLeadArticle(this.board_id, this.article_id).subscribe( a => this.lead_article = a);     
           this.httpDataService.getLagArticle(this.board_id, this.article_id).subscribe( a => this.lag_article = a);     
-
+  
           //TODO: 조회수 업데이트 API 호출
         }
       );
     }
 
   ngOnInit() {}    
+
+  onSubmit() {
+    console.log(this.article_id);
+    console.log('board_id: ', this.board_id);
+    console.log('article_id: ', this.article_id);
+    
+    this.reply_form.controls.article_id.setValue(this.article_id);
+    
+    this.httpDataService.postReply(this.reply_form.value as Reply).subscribe(
+      r => {
+        console.log('refresh url: ', 'contents_view/' + this.board_id + '/' + this.article_id);
+        this.router.navigate(['contents_view/' + this.board_id + '/' + this.article_id]);
+      });
+  }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute }                       from '@angular/router';
-import { Category, Good } from '../interface_category';
+import { Category, Good, Article } from '../interface_category';
 import { HttpDataServiceService } from '../http-data-service.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class MainIntroComponent {
   category?:  Category;
   Goods:      Good[] = [];   /** 상품 리스트 변수 */
   PopGoods:   Good[] = [];   /** 상품 리스트 변수 */
-  
+  NewsArticle:Article[] =[];
+
   constructor(
     private route: ActivatedRoute,
     private httpDataService: HttpDataServiceService
@@ -27,6 +28,7 @@ export class MainIntroComponent {
 
           this.httpDataService.getGoodsNewProd().subscribe(a => this.Goods = a);          
           this.httpDataService.getGoodPop().subscribe(a => this.PopGoods = a);
+          this.httpDataService.getNewsArticles().subscribe(a => this.NewsArticle = a);
 
           console.log('values: ', this.categoryId);        
         }

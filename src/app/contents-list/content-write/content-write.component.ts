@@ -1,5 +1,5 @@
 import { Component }                            from '@angular/core';
-import { ActivatedRoute, Route, Router }                from '@angular/router';
+import { ActivatedRoute, Route, Router }        from '@angular/router';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Article, Category }                    from '../../interface_category';
 import { HttpDataServiceService }               from '../../http-data-service.service';

@@ -104,4 +104,16 @@ export interface Article {
     article_recommend_count?: number;
     article_update_datetime?: Date;
     category?: Category;
+    replies?: Reply[];
+}
+
+export interface Reply {
+    reply_id: string;
+    article_id: string;
+    reply_user_id: string;
+    reply_body: string;
+    reply_write_datetime?: Date;
+    reply_update_datetime?: Date;
+    use_yn: string;
+    article?: Article;
 }

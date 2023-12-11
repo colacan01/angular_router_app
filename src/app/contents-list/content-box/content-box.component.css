@@ -1,0 +1,8 @@
+.article_body_2rows {
+    height: 2.7rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }

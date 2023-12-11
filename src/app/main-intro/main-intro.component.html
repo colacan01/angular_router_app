@@ -39,50 +39,17 @@
         </section> -->
         
         <section id="main-news">
-            <div id="row_new_article_label" class="row mt-3">
+            <div id="row_new_article_label" class="row mt-3 mb-2">
                 <div class="col">
                     <h4>새소식</h4>
                 </div>
             </div>
             <div id="row_new_articles" class="row row-cols-1 row-cols-lg-2">
-                <div class="col">
-                    <div class="card" style="border-style: none;">
-                        <div class="card-body">
-                            <h6 class="card-title">일정한 사이즈 div 안에 이미지 넣기</h6>
-                            <p class="card-text" style="font-size: .85rem;">+) 이번 프로젝트를 진행하면서 퍼블리싱 부분에서 가장 애를 먹었던 부분.혹시 제가 놓친 점이나 더 좋은 방법, 다른 방법이 있다면 얼마든지 알려주시기 바랍니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="border-style: none;">
-                        <div class="card-body">
-                            <h6 class="card-title">시즌 맞이 할인 프로모션</h6>
-                            <p class="card-text" style="font-size: .85rem;">2023년 시즌을 맞이하며 완성차 할인 프로모션을 진행합니다.최대 20%의 특별한 할인 혜택을 만나보세요. 가까운 SCOTT 대리점에서 구입하실 수 있습니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="border-style: none;">
-                        <div class="card-body">
-                            <h6 class="card-title">비링크 N100 VS Core i5-7400</h6>
-                            <p class="card-text" style="font-size: .85rem;">N100 6W CPU가 i5-7400 TDP 65W 보다도 성능이 좋다고?<br />9세대 i3에도 비빈다?</p>
-                        </div>
-                    </div>
+                <div class="col" *ngFor="let article of NewsArticle">
+                    <app-content-box [article]="article"></app-content-box>
                 </div>
             </div>
         </section>
-
-        <!-- <section id="main-nav">
-            <div class="container" style="font-size: .7rem; padding-left: 0px;">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">자전거</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">로드</li>
-                    </ol>
-                </nav>
-            </div>
-        </section> -->
 
         <section id="main-goods">
             <section id="goods_new" class=" mb-4">

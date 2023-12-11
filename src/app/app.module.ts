@@ -20,6 +20,8 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { GoodDetailComponent } from './goods-list/good-detail/good-detail.component';
 import { ContentViewComponent } from './contents-list/content-view/content-view.component';
 import { ContentWriteComponent } from './contents-list/content-write/content-write.component';
+import { ContentBoxComponent } from './contents-list/content-box/content-box.component';
+import { ReplyViewComponent } from './contents-list/content-view/reply-view/reply-view.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ContentWriteComponent } from './contents-list/content-write/content-wri
     OrdersComponent,
     GoodDetailComponent,
     ContentViewComponent,
-    ContentWriteComponent
+    ContentWriteComponent,
+    ContentBoxComponent,
+    ReplyViewComponent
   ],
   imports: [
     BrowserModule,

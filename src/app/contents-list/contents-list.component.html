@@ -29,9 +29,9 @@
                 <tbody>
                     <tr *ngFor="let Article of Articles">
                         <td>{{Article.user_id}}</td>
-                        <td><a [routerLink]="['/content_view/'+ board_id +'/', Article.article_id]">{{Article.article_subject}}</a></td>
+                        <td><a [routerLink]="['/content_view/'+ board_id +'/', Article.article_id]">{{Article.article_subject}}</a><span class="badge bg-primary ms-2" style="font-size: .5rem;">{{Article.replies?.length}}</span></td>
                         <td style="text-align: right;">{{Article.article_read_count}}</td>
-                        <td style="text-align: right;">{{Article.article_write_datetime | date: 'yyyy-MM-dd'}}</td>
+                        <td style="text-align: right;">{{Article.article_write_datetime | date: 'yyyy-MM-dd hh:mm'}}</td>
                         <td style="text-align: center;">{{Article.article_recommend_count}}</td>
                     </tr>
                 </tbody>

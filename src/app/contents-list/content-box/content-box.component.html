@@ -1,0 +1,11 @@
+<a [routerLink]="['/content_view', article.board_id, article.article_id]">
+    <div class="card mb-4" style="border-style: none;">
+        <div class="card-body" style="padding:0px;">
+            <div class="d-flex justify-content-between">
+                <h6 class="card-title">{{article.article_subject}}</h6>
+                <span style="font-size:0.6rem;">{{article.article_write_datetime | date : 'yyyy-MM-dd hh:mm'}}</span>
+            </div>
+            <p class="card-text article_body_2rows" style="font-size: .85rem;" [innerHTML]="article.article_body"></p>
+        </div>
+    </div>
+</a>
