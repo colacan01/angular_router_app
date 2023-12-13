@@ -186,6 +186,25 @@ export class HttpDataServiceService {
             );
   }
 
+  postReadCount(ArticleId: string, ActionUserId: string): Observable<unknown> {
+    this.targetAPI = 'content/postArticleReadCount?Article_Id=' + ArticleId + '&Action_User_Id=' + ActionUserId;
+
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    // console.log('postReadCount: Start');
+    // console.log('postReadCount URL: ', this.baseURL + this.targetAPI);
+
+    return this.http.post(this.baseURL + this.targetAPI, httpHeader)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+
+  }
+
   postReply(reply: Reply): Observable<Reply> {
     this.targetAPI = 'content/postReply';
     

@@ -9,7 +9,7 @@ import { HttpDataServiceService }               from '../http-data-service.servi
   styleUrls: ['./contents-list.component.css']
 })
 export class ContentsListComponent {
-  Articles: Article[] = [];
+  articles: Article[] = [];
   board_id: string;
 
   constructor(
@@ -22,7 +22,7 @@ export class ContentsListComponent {
       this.route.params.subscribe(
         params => {
           this.board_id   = String(params['board_id']);
-          this.httpDataService.getArticles(this.board_id).subscribe( a => this.Articles = a);          
+          this.httpDataService.getArticles(this.board_id).subscribe( a => this.articles = a);          
           console.log('values: ', this.board_id);        
         }
       );

@@ -19,7 +19,7 @@
             <table class="table">
                 <thead class="caption-top">
                     <tr>
-                        <th style="background: #e4e4e4;text-align: center;">작성자</th>
+                        <th class="text-center" style="background: #e4e4e4;text-align: center;">작성자</th>
                         <th style="background: #e4e4e4;">제목</th>
                         <th class="text-center" style="background: #e4e4e4;">조회건수</th>
                         <th class="text-center" style="background: #e4e4e4;">작성일</th>
@@ -27,12 +27,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let Article of Articles">
-                        <td>{{Article.user_id}}</td>
-                        <td><a [routerLink]="['/content_view/'+ board_id +'/', Article.article_id]">{{Article.article_subject}}</a><span class="badge bg-primary ms-2" style="font-size: .5rem;">{{Article.replies?.length}}</span></td>
-                        <td style="text-align: right;">{{Article.article_read_count}}</td>
-                        <td style="text-align: right;">{{Article.article_write_datetime | date: 'yyyy-MM-dd hh:mm'}}</td>
-                        <td style="text-align: center;">{{Article.article_recommend_count}}</td>
+                    <tr *ngFor="let article of articles">
+                        <td class="text-center">{{article.user_id}}</td>
+                        <td><a [routerLink]="['/content_view/'+ board_id +'/', article.article_id]">{{article.article_subject}}</a>
+                            <span class="badge bg-primary ms-2" style="font-size: .5rem;" *ngIf="article?.article_reply_count">{{article?.article_reply_count}}</span>
+                        </td>
+                        <td class="text-center">{{article?.article_read_count}}</td>
+                        <td class="text-center">{{article.article_write_datetime | date: 'yyyy-MM-dd hh:mm'}}</td>
+                        <td class="text-center">{{article?.article_recommend_count}}</td>
                     </tr>
                 </tbody>
             </table>

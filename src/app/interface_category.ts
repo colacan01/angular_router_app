@@ -103,8 +103,10 @@ export interface Article {
     article_write_datetime?: Date;
     article_recommend_count?: number;
     article_update_datetime?: Date;
+    article_reply_count?: number;
     category?: Category;
     replies?: Reply[];
+    // article_action_histories?: Article_Action_His[];
 }
 
 export interface Reply {
@@ -116,4 +118,12 @@ export interface Reply {
     reply_update_datetime?: Date;
     use_yn: string;
     article?: Article;
+}
+
+export interface Article_Action_His {
+    article_id: string;
+    action_datetime: Date;
+    action_type: string;
+    action_user_id: string;
+    acticle?: Article;
 }

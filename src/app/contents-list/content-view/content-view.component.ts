@@ -15,6 +15,8 @@ export class ContentViewComponent {
   article?: Article;
   lead_article?: Article;
   lag_article?: Article;
+  user_id: string = '';
+  postReturnValue?: string;
 
   reply_form = this.formB.group({  
     reply_id: 'temp',  
@@ -35,6 +37,7 @@ export class ContentViewComponent {
     { 
       this.board_id = '';
       this.article_id = '';
+      this.user_id = 'dev';
 
       /** 아래 코드를 넣어야 같은 화면에서 리프레쉬 됨 */
       this.route.params.subscribe(
@@ -48,10 +51,12 @@ export class ContentViewComponent {
           console.log('content-view board_id: ', this.board_id);
           console.log('content-view article_id: ', this.article_id);
 
+          this.httpDataService.postReadCount(this.article_id, this.user_id).subscribe();
+
           this.httpDataService.getArticle(this.article_id).subscribe( a => this.article = a);     
           this.httpDataService.getLeadArticle(this.board_id, this.article_id).subscribe( a => this.lead_article = a);     
           this.httpDataService.getLagArticle(this.board_id, this.article_id).subscribe( a => this.lag_article = a);     
-  
+          
           //TODO: 조회수 업데이트 API 호출
         }
       );
@@ -70,6 +75,16 @@ export class ContentViewComponent {
       r => {
         console.log('refresh url: ', 'contents_view/' + this.board_id + '/' + this.article_id);
         this.router.navigate(['contents_view/' + this.board_id + '/' + this.article_id]);
+
+        this.article?.replies?.push({
+                                      reply_body: r.reply_body,
+                                      reply_id: r.reply_id,
+                                      article_id: r.article_id,
+                                      reply_user_id: r.reply_user_id,
+                                      use_yn: r.use_yn,
+                                      reply_write_datetime: r.reply_write_datetime,
+                                      reply_update_datetime: r.reply_update_datetime
+                                    });
       });
   }
 }
