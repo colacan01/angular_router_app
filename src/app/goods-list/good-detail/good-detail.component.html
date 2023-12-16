@@ -24,7 +24,7 @@
                         <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
                         <p class="my-4" *ngIf="good?.message" innerHTML="{{good?.message}}"></p>
 
-                        <app-good-info [good_infos]="good?.good_infos" ></app-good-info>
+                        <app-good-info [good_infos]="good?.base_good_infos" ></app-good-info>
                     
                     </div>
                     
@@ -53,61 +53,31 @@
                 </div>
             </div>
         </section>
-        <section id="good_detail" style="min-height: 400px;font-size: .8rem;">
-            <div id="good_detail-1" class="row mt-5">
-                <div class="mx-auto">
-                    <div>
-                        <ul class="nav nav-tabs nav-fill" role="tablist">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">제품정보</a></li>
-                            <li *ngIf="good?.specs" class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">상세사양</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">지오메트리</a></li>
-                        </ul>
-                        <div class="tab-content mt-4">
-                            <div id="tab-1" class="tab-pane active" role="tabpanel">
-                                <div id="row_new_articles" class="row row-cols-1 row-cols-lg-2">
-                                    <div class="col">
-                                        <div class="card" style="border-style: none;">
-                                            <div class="card-body">
-                                                <h6>일정한 사이즈 div 안에 이미지 넣기</h6>
-                                                <p style="font-size: .85rem;">+) 이번 프로젝트를 진행하면서 퍼블리싱 부분에서 가장 애를 먹었던 부분.혹시 제가 놓친 점이나 더 좋은 방법, 다른 방법이 있다면 얼마든지 알려주시기 바랍니다.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card" style="border-style: none;">
-                                            <div class="card-body">
-                                                <h6>시즌 맞이 할인 프로모션</h6>
-                                                <p style="font-size: .85rem;">2023년 시즌을 맞이하며 완성차 할인 프로모션을 진행합니다.최대 20%의 특별한 할인 혜택을 만나보세요. 가까운 SCOTT 대리점에서 구입하실 수 있습니다.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card" style="border-style: none;">
-                                            <div class="card-body">
-                                                <h6>비링크 N100 VS Core i5-7400</h6>
-                                                <p style="font-size: .85rem;">N100 6W CPU가 i5-7400 TDP 65W 보다도 성능이 좋다고?<br />9세대 i3에도 비빈다?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                            
-                            <!-- <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel">
-                                <div id="specs" class="col" style="column-count: 2;">
-                                    <ul style="list-style-type: none;padding: 0px;">
-                                        <li *ngFor="let specs of getSpecs(good?.specs, ';')">
-                                            <div class="w-25" style="float: left;"><span>{{getItemName(specs, '|')}}</span></div>
-                                            <div class="w-75" style="float: left;"><span>{{getItemDesc(specs, '|')}}</span></div>
-                                        </li>                                        
-                                    </ul>
-                                </div>
-                            </div> -->
-                            <div *ngIf="good?.specs" id="tab-2" class="tab-pane" role="tabpanel" innerHTML="{{good?.specs}}" align="center">                                
-                            </div>
+        <section id="good_detail" style="min-height: 400px;font-size: .8rem;" *ngIf="good?.detail_good_infos?.length != 0">
+            <div id="good_detail-1" class="row mt-5 mx-auto">
+                <div>
+                    <ul class="nav nav-tabs nav-fill" role="tablist">
+                        <li class="nav-item" role="presentation" *ngFor="let detail_good_info of good?.detail_good_infos; index as i"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-{{i}}">{{detail_good_info.good_info_subject}}</a></li>
+                        <!-- <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">제품정보</a></li>
+                        <li class="nav-item" role="presentation" *ngIf="good?.specs" ><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">상세사양</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">지오메트리</a></li> -->
+                    </ul>
 
-                            <div id="tab-3" class="tab-pane" role="tabpanel">
-                                <p>Content for tab 3.</p>
-                            </div>
+                    <div class="tab-content mt-4">
+                        <ng-container *ngFor="let detail_good_info of good?.detail_good_infos; index as i">
+                        <div id="tab-{{i}}" class="tab-pane active" role="tabpanel" [innerHTML]="detail_good_info.good_info_content">                            
+                        </div>          
+                        </ng-container>                  
+                        <!-- 
+                        <div id="tab-1" class="tab-pane active" role="tabpanel">                                
+                            <p>Content for tab 1.</p>
+                        </div>                            
+                        <div id="tab-2" class="tab-pane" role="tabpanel" *ngIf="good?.specs" innerHTML="{{good?.specs}}" align="center">                                
                         </div>
+                        <div id="tab-3" class="tab-pane" role="tabpanel">
+                            <p>Content for tab 3.</p>
+                        </div> 
+                        -->
                     </div>
                 </div>
             </div>

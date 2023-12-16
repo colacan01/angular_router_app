@@ -71,7 +71,8 @@ export interface Good {
     category?: Category;
     brand?: Brand;
     price_history?: Price_History;
-    good_infos: Good_Info[];
+    base_good_infos: Good_Info[];
+    detail_good_infos: Good_Info[];
 }
 
 export interface Good_Info {
