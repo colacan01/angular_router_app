@@ -21,26 +21,11 @@
                     <h4>{{good?.good_nm}}</h4>
                     <div style="min-height: 300px;">
 
-                    <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
-                    <p class="my-4" *ngIf="good?.message" innerHTML="{{good?.message }}"></p>
-                    <ng-container *ngIf="good?.features">
-                    <!-- 제품 특징 속성이 있는 경우 아래 요소 표시 -->
-                    <h6>제품 특징</h6>
-                    <ul id="list_features" style="padding-left: 16px;">
-                        <ng-container *ngFor="let feature of getFeatures(good?.features, ';')">
-                        <li *ngIf="feature"><span style="color: rgb(17, 17, 17);">{{feature}}</span></li> 
-                        </ng-container>
-                    </ul>
-                    </ng-container>
-                    <ng-container *ngIf="good?.sizes">
-                    <!-- 사이즈 속성이 있는 경우 아래 요소 표시 -->
-                    <h6>Size</h6>
-                    <ul id="list_size" class="list-inline">
-                        <ng-container *ngFor="let size of getSizes(good?.sizes, ';')">
-                        <li class="list-inline-item bike_size" *ngIf="size">{{size}}</li>                    
-                        </ng-container>
-                    </ul>   
-                    </ng-container>
+                        <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
+                        <p class="my-4" *ngIf="good?.message" innerHTML="{{good?.message}}"></p>
+
+                        <app-good-info [good_infos]="good?.good_infos" ></app-good-info>
+                    
                     </div>
                     
                     <ng-container *ngIf="!good?.price_history?.base_price">

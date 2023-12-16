@@ -1,0 +1,8 @@
+<ng-container *ngFor="let good_info of good_infos">
+    <h6>{{good_info.good_info_subject}}</h6>
+    <ul id="list_{{good_info.good_info_type}}" style="padding-left: 16px;">
+        <ng-container *ngFor="let item of getItems(good_info.good_info_content, ';')">
+        <li *ngIf="item" class="{{good_info.good_info_css_class}}"><span style="color: rgb(17, 17, 17);">{{item}}</span></li> 
+        </ng-container>
+    </ul>
+</ng-container>

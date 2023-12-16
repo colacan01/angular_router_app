@@ -22,6 +22,7 @@ import { ContentViewComponent } from './contents-list/content-view/content-view.
 import { ContentWriteComponent } from './contents-list/content-write/content-write.component';
 import { ContentBoxComponent } from './contents-list/content-box/content-box.component';
 import { ReplyViewComponent } from './contents-list/content-view/reply-view/reply-view.component';
+import { GoodInfoComponent } from './goods-list/good-detail/good-info/good-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ReplyViewComponent } from './contents-list/content-view/reply-view/repl
     ContentViewComponent,
     ContentWriteComponent,
     ContentBoxComponent,
-    ReplyViewComponent
+    ReplyViewComponent,
+    GoodInfoComponent
   ],
   imports: [
     BrowserModule,

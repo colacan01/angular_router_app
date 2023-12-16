@@ -1,0 +1,7 @@
+.bike_size {
+    min-width: 40px;
+    background: #e6e5e5;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
