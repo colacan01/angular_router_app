@@ -57,17 +57,34 @@
             <div id="good_detail-1" class="row mt-5 mx-auto">
                 <div>
                     <ul class="nav nav-tabs nav-fill" role="tablist">
-                        <li class="nav-item" role="presentation" *ngFor="let detail_good_info of good?.detail_good_infos; index as i"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-{{i}}">{{detail_good_info.good_info_subject}}</a></li>
-                        <!-- <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">제품정보</a></li>
+                        <ng-container *ngFor="let detail_good_info of good?.detail_good_infos; index as i">
+                        <li class="nav-item" role="presentation">
+                            <ng-container *ngIf="i==0">
+                            <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-{{i}}">{{detail_good_info.good_info_subject}}</a>
+                            </ng-container>
+                            <ng-container *ngIf="i>0">
+                                <a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-{{i}}">{{detail_good_info.good_info_subject}}</a>
+                            </ng-container>
+                        </li>
+                        </ng-container>
+                        <!-- 
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">제품정보</a>
+                        </li>
                         <li class="nav-item" role="presentation" *ngIf="good?.specs" ><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">상세사양</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">지오메트리</a></li> -->
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">지오메트리</a></li> 
+                        -->
                     </ul>
 
                     <div class="tab-content mt-4">
                         <ng-container *ngFor="let detail_good_info of good?.detail_good_infos; index as i">
-                        <div id="tab-{{i}}" class="tab-pane active" role="tabpanel" [innerHTML]="detail_good_info.good_info_content">                            
-                        </div>          
-                        </ng-container>                  
+                        <ng-container *ngIf="i==0">
+                        <div id="tab-{{i}}" class="tab-pane active" role="tabpanel" [innerHTML]="detail_good_info.good_info_content"></div>
+                        </ng-container>
+                        <ng-container *ngIf="i>0">
+                        <div id="tab-{{i}}" class="tab-pane" role="tabpanel" [innerHTML]="detail_good_info.good_info_content"></div>
+                        </ng-container>
+                        </ng-container>
                         <!-- 
                         <div id="tab-1" class="tab-pane active" role="tabpanel">                                
                             <p>Content for tab 1.</p>
