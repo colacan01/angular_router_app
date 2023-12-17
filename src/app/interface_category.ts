@@ -106,7 +106,7 @@ export interface Goods_Path {
 
 export interface Article {
     article_id?: string;
-    article_seq: number;
+    article_seq?: number;
     board_id: string;
     user_id: string;
     article_subject: string;
@@ -118,6 +118,7 @@ export interface Article {
     article_reply_count?: number;
     category?: Category;
     replies?: Reply[];
+    user?: User;
     // article_action_histories?: Article_Action_His[];
 }
 
@@ -138,4 +139,12 @@ export interface Article_Action_His {
     action_type: string;
     action_user_id: string;
     acticle?: Article;
+}
+
+export interface User {
+    user_id: string;
+    user_nm: string;
+    user_password: string;
+    user_email: string;
+    user_mobile_no: string;
 }

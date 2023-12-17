@@ -3,11 +3,16 @@
 </section>
 <main>
     <div class="container" style="font-size: .7rem">
+        
+        <section id="board_class">
+            <h3 id="board_class_name" class="my-4">{{articles[0].category?.category_nm}}</h3>
+        </section>
+
         <div id="write" class="row">
             <div class="col">
                 <nav style="font-size: 0.85em">
                     <ul class="nav pagination">
-                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']">글쓰기</a></li>
+                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': page_index}">글쓰기</a></li>
                         <li class="nav-item page-item"><a class="nav-link active" href="#">찾기옵션</a></li>
                         <li class="nav-item page-item"><a class="nav-link" href="#">관리2</a></li>
                         <li class="nav-item page-item"></li>
@@ -28,7 +33,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let article of articles">
-                        <td class="text-center">{{article.user_id}}</td>
+                        <td class="text-center">{{article?.user?.user_nm}}</td>
                         <td><a [routerLink]="['/content_view/'+ board_id +'/', article.article_id]">{{article.article_subject}}</a>
                             <span class="badge bg-primary ms-2" style="font-size: .5rem;" *ngIf="article?.article_reply_count">{{article?.article_reply_count}}</span>
                         </td>
@@ -42,14 +47,19 @@
         <div id="pagination" class="row">
             <div class="col">
                 <nav style="font-size: 0.85em">
-                    <ul class="nav pagination">
+                    <ul class="nav pagination justify-content-center">
+                        <li class="nav-item page-item" *ngFor="let in of counter(board_page); let idx = index">
+                            <a class="nav-link" [routerLink]="['/contents_list']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': idx + 1}">{{idx + 1}}</a>
+                        </li>
+                        <!-- 
                         <li class="nav-item page-item"><a class="nav-link active" href="#">처음</a></li>
                         <li class="nav-item page-item"><a class="nav-link active" href="#">이전</a></li>
                         <li class="nav-item page-item"><a class="nav-link" href="#">1</a></li>
                         <li class="nav-item page-item"><a class="nav-link" href="#">2</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">3</a></li>
+                        <li class="nav-item page-item"><a class="nav-link" href="#">3</a></li> 
                         <li class="nav-item page-item"><a class="nav-link" href="#">다음</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">마지막</a></li>
+                        <li class="nav-item page-item"><a class="nav-link" href="#">마지막</a></li> 
+                        -->
                     </ul>
                 </nav>
             </div>

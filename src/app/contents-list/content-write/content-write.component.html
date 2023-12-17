@@ -6,15 +6,12 @@
             </section>
             <section id="article_header" style="margin-bottom: 15px;">
                 <select class="form-select w-25" style="margin-bottom: 7px;" formControlName="board_id">
-                    <option value="0" selected>게시판을 선택하세요</option>
-                    <ng-container *ngFor="let board of Boards">
-                    <option value="{{board.category_id}}">{{board.category_nm}}</option>    
-                    </ng-container>
+                    <option *ngFor="let board of Boards" value="{{board.category_id}}">{{board.category_nm}}</option>
                 </select>
                 <input id="article_subject" class="form-control" type="text" style="width: 100%;" placeholder="제목을 입력하세요" formControlName="article_subject" />
             </section>
             <section id="article_body" style="margin-bottom: 15px;">
-                <textarea id="article_body" class="form-control" style="width: 100%;height: 300px;" placeholder="내용을 입력하세요" formControlName="article_body"></textarea>
+                <textarea id="article_body" class="form-control editor" style="width: 100%;height: 300px;" placeholder="내용을 입력하세요" formControlName="article_body"></textarea>
             </section>
             <section id="article_attach" style="margin-bottom: 30px;">
                 <div id="attach_files" class="d-flex">
@@ -30,7 +27,7 @@
             <section id="action">
                 <div class="col-3 d-flex justify-content-center mx-auto gap-3">
                     <button class="btn btn-primary" type="submit" style="width: 90px;" [disabled]="write_form.pristine || write_form.invalid">저장</button>
-                    <button class="btn btn-secondary" type="button" style="width: 90px;">취소</button>
+                    <button class="btn btn-secondary" type="cancel" style="width: 90px;">취소</button>
                 </div>
             </section>
         </form>

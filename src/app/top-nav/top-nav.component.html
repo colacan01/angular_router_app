@@ -13,9 +13,16 @@
                         <a class="nav-link text-dark dropdown-toggle" *ngIf="category.subcategories?.length != 0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{category.category_nm}}</a>
                         <ul class="dropdown-menu" *ngIf="category.subcategories">
                             <li *ngFor="let subcategory of category.subcategories">
+                                <ng-container *ngIf="subcategory.target_url=='contents_list'">
+                                <a class="dropdown-item" [routerLink]="[subcategory.target_url]" [queryParams]="{'board_id': subcategory.category_id}">
+                                    <i class="bi {{subcategory.icon_css_class}} me-4" *ngIf="subcategory.icon_css_class" ></i>{{subcategory.category_nm}}
+                                </a>
+                                </ng-container>
+                                <ng-container *ngIf="subcategory.target_url=='goods_list'">
                                 <a class="dropdown-item" [routerLink]="[subcategory.target_url, subcategory.category_id]">
                                     <i class="bi {{subcategory.icon_css_class}} me-4" *ngIf="subcategory.icon_css_class" ></i>{{subcategory.category_nm}}
                                 </a>
+                                </ng-container>                                
                             </li>                        
                         </ul>   
 

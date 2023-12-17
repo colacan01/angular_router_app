@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Category, Good, Goods_Path, Article, Reply } from './interface_category';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -116,8 +116,8 @@ export class HttpDataServiceService {
             );      
   }
 
-  getArticles(BoardId: string): Observable<Article[]> {
-    this.targetAPI = 'content/' + BoardId + '/getArticles';
+  getArticles(BoardId: string, PageSize: string, PageIndex: string): Observable<Article[]> {
+    this.targetAPI = 'content/getArticles?board_id='+ BoardId + '&page_size=' + PageSize + '&page_index=' + PageIndex;
     return this.http.get<Article[]>(this.baseURL + this.targetAPI)
             .pipe(
               catchError(this.ErrorHandler)
@@ -127,6 +127,14 @@ export class HttpDataServiceService {
   getNewsArticles(): Observable<Article[]> {
     this.targetAPI = 'content/getnewsarticles';
     return this.http.get<Article[]>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
+  getBoardPages(BoardId: string, PageSize: number) {
+    this.targetAPI = 'content/' + BoardId + '/getBoardPages';
+    return this.http.get<number>(this.baseURL + this.targetAPI)
             .pipe(
               catchError(this.ErrorHandler)
             );      

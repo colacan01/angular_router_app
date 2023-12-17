@@ -11,6 +11,10 @@ import { HttpDataServiceService }               from '../http-data-service.servi
 export class ContentsListComponent {
   articles: Article[] = [];
   board_id: string;
+  board_page!: number;
+
+  page_size!: string;
+  page_index!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,13 +23,29 @@ export class ContentsListComponent {
     { 
       this.board_id = '';
 
-      this.route.params.subscribe(
-        params => {
-          this.board_id   = String(params['board_id']);
-          this.httpDataService.getArticles(this.board_id).subscribe( a => this.articles = a);          
-          console.log('values: ', this.board_id);        
+      this.route.queryParams.subscribe(
+        parameters => {
+          this.board_id   = String(parameters['board_id']);
+          this.page_size  = String(parameters['page_size']);
+          this.page_index = String(parameters['page_index']);
+          
+          if(this.page_size == 'undefined') {
+            this.page_size = '10';
+          }
+
+          if(this.page_index == 'undefined') {
+            this.page_index = '1';
+          }
+
+          this.httpDataService.getBoardPages(this.board_id, 10)
+                              .subscribe( a => this.board_page  = a);   
+          this.httpDataService.getArticles(this.board_id, this.page_size, this.page_index)
+                              .subscribe( a => this.articles = a);
         }
       );
     }
   
+    counter(i: number ) {
+      return new Array(i);
+    }
 }

@@ -23,12 +23,11 @@
 
                         <h6 *ngIf="good?.good_nm_ko">{{good?.good_nm_ko}}</h6>
                         <p class="my-4" *ngIf="good?.message" innerHTML="{{good?.message}}"></p>
-
                         <app-good-info [good_infos]="good?.base_good_infos" ></app-good-info>
                     
                     </div>
                     
-                    <ng-container *ngIf="!good?.price_history?.base_price">
+                    <ng-container *ngIf="!good?.price_history?.base_price && good?.price_history?.sale_price">
                     <div class="d-flex justify-content-between mt-5">
                         <h6>판매 금액</h6>
                         <h5>{{good?.price_history?.sale_price | number }} 원</h5>
