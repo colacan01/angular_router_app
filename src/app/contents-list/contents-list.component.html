@@ -12,9 +12,9 @@
             <div class="col">
                 <nav style="font-size: 0.85em">
                     <ul class="nav pagination">
-                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': page_index}">글쓰기</a></li>
+                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']" [queryParams]="{'board_id': board_id, 'page_size':10}">글쓰기</a></li>
                         <li class="nav-item page-item"><a class="nav-link active" href="#">찾기옵션</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">관리2</a></li>
+                        <!-- <li class="nav-item page-item"><a class="nav-link" href="#">관리2</a></li> -->
                         <li class="nav-item page-item"></li>
                     </ul>
                 </nav>
@@ -24,11 +24,11 @@
             <table class="table">
                 <thead class="caption-top">
                     <tr>
-                        <th class="text-center" style="background: #e4e4e4;text-align: center;">작성자</th>
+                        <th class="text-center" style="background: #e4e4e4;text-align: center; width:110px;">작성자</th>
                         <th style="background: #e4e4e4;">제목</th>
-                        <th class="text-center" style="background: #e4e4e4;">조회건수</th>
-                        <th class="text-center" style="background: #e4e4e4;">작성일</th>
-                        <th class="text-center" style="background: #e4e4e4;">추천건수</th>
+                        <th class="text-center" style="background: #e4e4e4; width:56px;">조회건수</th>
+                        <th class="text-center" style="background: #e4e4e4; width:130px;">작성일</th>
+                        <th class="text-center" style="background: #e4e4e4; width:56px;">추천건수</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@
                             <span class="badge bg-primary ms-2" style="font-size: .5rem;" *ngIf="article?.article_reply_count">{{article?.article_reply_count}}</span>
                         </td>
                         <td class="text-center">{{article?.article_read_count}}</td>
-                        <td class="text-center">{{article.article_write_datetime | date: 'yyyy-MM-dd hh:mm'}}</td>
+                        <td class="text-center">{{article.article_write_datetime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
                         <td class="text-center">{{article?.article_recommend_count}}</td>
                     </tr>
                 </tbody>
