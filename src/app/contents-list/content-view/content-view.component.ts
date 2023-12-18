@@ -10,13 +10,14 @@ import { HttpDataServiceService }               from '../../http-data-service.se
   styleUrls: ['./content-view.component.css']
 })
 export class ContentViewComponent {
-  board_id: string;
-  article_id: string;
-  article?: Article;
-  lead_article?: Article;
-  lag_article?: Article;
-  user_id: string = '';
+  board_id:         string;
+  article_id:       string;
+  article?:         Article;
+  lead_article?:    Article;
+  lag_article?:     Article;
+  user_id:          string = '';
   postReturnValue?: string;
+  // reply?:            Reply;
 
   reply_form = this.formB.group({  
     reply_id: 'temp',  
@@ -42,14 +43,11 @@ export class ContentViewComponent {
       /** 아래 코드를 넣어야 같은 화면에서 리프레쉬 됨 */
       this.route.params.subscribe(
         params => {
-          // this.article_id  = Number(params['id']);
-          // this.article     = this.goodsService.getArticleByBoardArticle(this.board_id, this.article_id);          
-          
           this.board_id    = String(params['board_id']);          
           this.article_id  = String(params['artice_id']);
           
-          console.log('content-view board_id: ', this.board_id);
-          console.log('content-view article_id: ', this.article_id);
+          // console.log('content-view board_id: ', this.board_id);
+          // console.log('content-view article_id: ', this.article_id);
 
           this.httpDataService.postReadCount(this.article_id, this.user_id).subscribe();
 
@@ -65,26 +63,14 @@ export class ContentViewComponent {
   ngOnInit() {}    
 
   onSubmit() {
-    console.log(this.article_id);
-    console.log('board_id: ', this.board_id);
-    console.log('article_id: ', this.article_id);
-    
+    //기본키 셋팅
     this.reply_form.controls.article_id.setValue(this.article_id);
     
     this.httpDataService.postReply(this.reply_form.value as Reply).subscribe(
-      r => {
-        console.log('refresh url: ', 'contents_view/' + this.board_id + '/' + this.article_id);
-        this.router.navigate(['contents_view/' + this.board_id + '/' + this.article_id]);
-
-        this.article?.replies?.push({
-                                      reply_body: r.reply_body,
-                                      reply_id: r.reply_id,
-                                      article_id: r.article_id,
-                                      reply_user_id: r.reply_user_id,
-                                      use_yn: r.use_yn,
-                                      reply_write_datetime: r.reply_write_datetime,
-                                      reply_update_datetime: r.reply_update_datetime
-                                    });
-      });
+      resp => {
+        this.article?.replies?.push(resp);        
+        this.reply_form.controls.reply_body.reset();
+        }
+      );
   }
 }
