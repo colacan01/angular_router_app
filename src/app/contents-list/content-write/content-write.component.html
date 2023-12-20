@@ -1,6 +1,6 @@
 <main>
     <div class="container">
-        <form [formGroup]="write_form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="write_form" (ngSubmit)="onSubmit()" method="post" enctype="multipart/form-data">
             <section id="wirte_header">
                 <h3 id="wirte_header_name" class="my-4">게시물 작성</h3>
             </section>
@@ -11,17 +11,15 @@
                 <input id="article_subject" class="form-control" type="text" style="width: 100%;" placeholder="제목을 입력하세요" formControlName="article_subject" />
             </section>
             <section id="article_body" style="margin-bottom: 15px;">
-                <!-- <div class="editor" formControlName="article_body"></div> -->
-                <!-- input 박스와 연결 -->
-                <textarea class="form-control editor" style="width: 100%;height: 300px;" placeholder="내용을 입력하세요" formControlName="article_body"></textarea>
+                <textarea id="article_content" class="form-control tr-editor" style="width: 100%;height: 300px;"></textarea>
             </section>
-            <section id="article_attach" style="margin-bottom: 30px;">
-                <div id="attach_files" class="d-flex">
-                    <div style="width: 100%;"><input id="article_attach" class="form-control" type="file" /></div>
+            <section id="article_attach" style="margin-bottom: 25px;">
+                <div id="attach_files" class="d-flex" style="margin-bottom: 5px;">
+                    <div style="width: 100%;"><input type="file" id="article_attach_file" class="form-control" onchange="console.log(event.target)"/></div>
                     <div class="d-flex justify-content-end align-items-center" style="padding-left: 4px;">
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary text-nowrap" type="button">추가</button>
-                            <button class="btn btn-danger text-nowrap" type="button">삭제</button>
+                            <button id="add_field" class="btn btn-primary text-nowrap" type="button" onclick="addElement('article_attach')">추가</button>
+                            <button id="rmv_field" class="btn btn-danger text-nowrap"  type="button" onclick="removeElement('article_attach', this)">삭제</button>
                         </div>
                     </div>
                 </div>

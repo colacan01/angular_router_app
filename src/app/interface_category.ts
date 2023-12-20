@@ -119,7 +119,7 @@ export interface Article {
     category?: Category;
     replies?: Reply[];
     user?: User;
-    // article_action_histories?: Article_Action_His[];
+    article_attach_files?: Article_Attach_File[];
 }
 
 export interface Reply {
@@ -141,10 +141,21 @@ export interface Article_Action_His {
     acticle?: Article;
 }
 
+export interface Article_Attach_File {
+    att_file_id: string;
+    article_id: string;
+    att_file_seq: number;
+    att_file_nm: string;
+    att_file_path: string;
+    att_file_size?: number;
+    acticle?: Article;
+}
+
 export interface User {
     user_id: string;
     user_nm: string;
     user_password: string;
     user_email: string;
     user_mobile_no: string;
+    acticles?: Article[];
 }

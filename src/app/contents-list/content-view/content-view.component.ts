@@ -46,16 +46,11 @@ export class ContentViewComponent {
           this.board_id    = String(params['board_id']);          
           this.article_id  = String(params['artice_id']);
           
-          // console.log('content-view board_id: ', this.board_id);
-          // console.log('content-view article_id: ', this.article_id);
-
           this.httpDataService.postReadCount(this.article_id, this.user_id).subscribe();
 
           this.httpDataService.getArticle(this.article_id).subscribe( a => this.article = a);     
           this.httpDataService.getLeadArticle(this.board_id, this.article_id).subscribe( a => this.lead_article = a);     
-          this.httpDataService.getLagArticle(this.board_id, this.article_id).subscribe( a => this.lag_article = a);     
-          
-          //TODO: 조회수 업데이트 API 호출
+          this.httpDataService.getLagArticle(this.board_id, this.article_id).subscribe( a => this.lag_article = a);               
         }
       );
     }

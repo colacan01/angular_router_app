@@ -16,15 +16,15 @@ export class ContentWriteComponent implements OnInit {
   article?:     Article;
   board!:       string;
   page_size!:   string;
-
+  _article_body!:  string;
   write_form = this.formB.group({  
     article_id:       'temp',  
     board_id:         ['', Validators.required],
     user_id:          'dev',
     article_subject:  ['', Validators.required],
-    article_body:     ['', Validators.required]
+    article_body:     ['']
   });
-  
+
   constructor(
     private router:             Router,
     private route:              ActivatedRoute,
@@ -51,20 +51,23 @@ export class ContentWriteComponent implements OnInit {
   }
   
   onSubmit(): void {
-    // console.log('write_from: ',      this.write_form.value);
     // console.log('board_id: ',        this.write_form.get('board_id')?.value);
     // console.log('article_subject: ', this.write_form.get('article_subject')?.value);
-    // console.log('article_body: ',    this.write_form.get('article_body')?.value);
+    // console.log('article_body: ',    (<HTMLInputElement>document.getElementById("article_content")).value);
+    // console.log('write_from: ',      this.write_form.value);
+    
+    this._article_body = (<HTMLInputElement>document.getElementById("article_content")).value;
+    this.write_form.controls.article_body.setValue(this._article_body);
 
     //TODO: rest api에서 리턴하는 http 응답코드 체크해서 정상/오류 처리
     this.httpDataService.postArticle(this.write_form.value as Article).subscribe( a => {
-      const data = { 
+      const q_data = { 
         board_id:   String(this.write_form.get('board_id')?.value), 
         page_size:  this.page_size,
         page_index: '1'
       };
  
-      this.router.navigate(['contents_list'], { queryParams: data });   
+      this.router.navigate(['contents_list'], { queryParams: q_data });   
       });
   }
 }
