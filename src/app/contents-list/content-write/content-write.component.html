@@ -15,13 +15,14 @@
             </section>
             <section id="article_attach" style="margin-bottom: 25px;">
                 <div id="attach_files" class="d-flex" style="margin-bottom: 5px;">
-                    <div style="width: 100%;"><input type="file" id="article_attach_file" name="article_attach_file" class="form-control" onchange="console.log(event.target.files[0].name)"/></div>
-                    <div class="d-flex justify-content-end align-items-center" style="padding-left: 4px;">
+                    <div style="width: 100%;"><input type="file" id="article_attach_file" name="article_attach_file" class="form-control" onchange="console.log(event.target.files)" multiple /></div>
+                    <!-- <div style="width: 100%;"><input type="file" id="article_attach_file" name="article_attach_file" class="form-control" onchange="onFileSelected($event)" multiple #fileUpload/></div> -->
+                    <!-- <div class="d-flex justify-content-end align-items-center" style="padding-left: 4px;">
                         <div class="btn-group" role="group">
                             <button id="add_field" class="btn btn-primary text-nowrap" type="button" onclick="addElement('article_attach')">추가</button>
                             <button id="rmv_field" class="btn btn-danger text-nowrap"  type="button" onclick="removeElement('article_attach', this)">삭제</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <section id="action">

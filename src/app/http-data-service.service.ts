@@ -232,9 +232,10 @@ export class HttpDataServiceService {
             );
   }
 
-  uploadFile(BoardId: string, ArticleId: string, FormData: FormData): Observable<Article_Attach_File[]> {
-    // this.targetAPI = 'content/uploadFile?Board_Id=' + BoardId + "&Article_Id=" + ArticleId;
-    this.targetAPI = 'content/uploadFile';
+  // uploadFile(BoardId: string, ArticleId: string, FormData: FormData): Observable<Article_Attach_File[]> {
+  uploadFile(BoardId: string, ArticleId: string, FormData: FormData) {
+    this.targetAPI = 'content/uploadFile?Board_Id=' + BoardId + "&Article_Id=" + ArticleId;
+    // this.targetAPI = 'content/uploadFile';
     
     // const q_data = new HttpParams()
     //             .set('board_id',    BoardId)
@@ -263,8 +264,9 @@ export class HttpDataServiceService {
 
     const httpHeader = {
       headers: {
-        'Content-Type': 'multipart/form-data; boundary=' + ArticleId,
-        'enctype':      'multipart/form-data'
+        // 'Content-Type': 'multipart/form-data; boundary=' + ArticleId,
+        'enctype':      'multipart/form-data',
+        'Accept':       '*/*',
       }
     };
 
@@ -281,9 +283,13 @@ export class HttpDataServiceService {
 
     console.log('Before Post File: ', this.baseURL + this.targetAPI);
     console.log('Before Post formData: ', FormData);
-    return this.http.post<Article_Attach_File[]>(this.baseURL + this.targetAPI, FormData, httpHeader)
-            .pipe(
-              catchError(this.ErrorHandler)
-            );
+    // return this.http.post<Article_Attach_File[]>(this.baseURL + this.targetAPI, FormData, httpHeader)
+    //         .pipe(
+    //           catchError(this.ErrorHandler)
+    //         );
+    return this.http.post(this.baseURL + this.targetAPI, FormData, httpHeader)
+                    .pipe(
+                      catchError(this.ErrorHandler)
+                    );
   }  
 }

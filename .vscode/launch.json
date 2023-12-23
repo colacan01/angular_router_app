@@ -4,8 +4,9 @@
   "configurations": [
     {
       "name": "ng serve",
+      "type": "msedge",
       // "type": "pwa-chrome",
-      "type": "FireFox",
+      //"type": "FireFox",
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"

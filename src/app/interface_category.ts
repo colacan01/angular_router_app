@@ -142,12 +142,12 @@ export interface Article_Action_His {
 }
 
 export interface Article_Attach_File {
-    att_file_id: string;
+    attach_file_id: string;
     article_id: string;
-    att_file_seq: number;
-    att_file_nm: string;
-    att_file_path: string;      //실제경로 + 파일명
-    att_file_size?: number;
+    attach_file_seq: number;
+    attach_file_nm: string;
+    attach_file_path: string;      //실제경로 + 파일명
+    attach_file_size?: number;
     acticle?: Article;
 }
 

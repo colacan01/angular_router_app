@@ -58,52 +58,20 @@ export class ContentWriteComponent implements OnInit {
   }
   
   onSubmit(): void {
-    // console.log('board_id: ',        this.write_form.get('board_id')?.value);
-    // console.log('article_subject: ', this.write_form.get('article_subject')?.value);
-    // console.log('article_body: ',    (<HTMLInputElement>document.getElementById("article_content")).value);
-    // console.log('write_from: ',      this.write_form.value);
     
     this._article_body = (<HTMLInputElement>document.getElementById("article_content")).value;
     this.write_form.controls.article_body.setValue(this._article_body);
 
-    //첨부파일 리스트 처리
-    const formData = new FormData();
-    this._attach_files = (<NodeList>document.getElementsByName('article_attach_file'));
-    console.log('업로드용 파일 인식: ', this._attach_files);
-
-    for (let file of this._attach_files) {
-      console.log('for loop 내부에서: ', file);
-      if(file.files.length > 0) {
-        formData.append("att_files", <File>file.files[0], file.files[0].name);
-        console.log('파일명: ', file.files[0].name);
-        console.log('formData: ', formData);
-      }
+    var formData = new FormData();    
+    this._attach_files = document.getElementById('article_attach_file');
+    
+    for (let file of this._attach_files.files) {
+      formData.append("att_files", file, file.name);        
     }
-    
-    //TODO: rest api에서 리턴하는 http 응답코드 체크해서 정상/오류 처리
-    // this.httpDataService.postArticle(this.write_form.value as Article).subscribe( a => this.article = a );
-    
-    // console.log('board_id: ', String(this.article.board_id));
-    // console.log('article_id: ', String(this.article.article_id));
 
-    // if(this._attach_files.length > 0) {
-    //   this.httpDataService.uploadFile(String(this.article.board_id), String(this.article.article_id), formData ).subscribe( f => this.attach_files = f);
-    // }
-
-    // const q_data = { 
-    //   // board_id:   String(this.write_form.get('board_id')?.value), 
-    //   board_id:   String(this.article.board_id),
-    //   page_size:  this.page_size,
-    //   page_index: '1'
-    // };
-
-    // this.router.navigate(['contents_list'], { queryParams: q_data });   
     this.httpDataService.postArticle(this.write_form.value as Article).subscribe( a => {
-      console.log('board_id: ', String(a.board_id));
-      console.log('article_id: ', String(a.article_id));
-
-      if(this._attach_files.length > 0) {
-        this.httpDataService.uploadFile(String(a.board_id), String(a.article_id), formData ).subscribe( f => this.attach_files = f);
+      if(this._attach_files.files.length > 0) {
+        this.httpDataService.uploadFile(String(a.board_id), String(a.article_id), formData ).subscribe();
       }
 
       const q_data = { 
