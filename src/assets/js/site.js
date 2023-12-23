@@ -11,6 +11,7 @@ function startEditor()
         }
     })
     .on('tbwblur', function() {
+        // 트럼보위그 에디터에 입력한 값에 따로 접근이 안되서 트럼보위그 에디터에서 focus를 잃어버리면, textarea의 값(value)로 전달한다
         document.getElementById("article_content").value = document.getElementsByClassName('trumbowyg-editor')[0].innerHTML;        
     });   
 }

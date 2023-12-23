@@ -10,11 +10,12 @@ import { HttpDataServiceService }               from '../http-data-service.servi
 })
 export class ContentsListComponent {
   articles: Article[] = [];
-  board_id: string;
+  board_id: string | undefined;
+  board_nm: string | undefined;
   board_page!: number;
 
-  page_size!: string;
-  page_index!: string;
+  page_size!: string | undefined;
+  page_index!: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,10 +38,14 @@ export class ContentsListComponent {
             this.page_index = '1';
           }
 
+          /** 화면의 네비게이션 표시용 */
           this.httpDataService.getBoardPages(this.board_id, 10)
-                              .subscribe( a => this.board_page  = a);   
+                              .subscribe( a => this.board_page  = a);  
+
           this.httpDataService.getArticles(this.board_id, this.page_size, this.page_index)
                               .subscribe( a => this.articles = a);
+
+          this.board_nm = String(this.articles[0].category?.category_nm);
         }
       );
     }

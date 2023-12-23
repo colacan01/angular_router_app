@@ -146,7 +146,7 @@ export interface Article_Attach_File {
     article_id: string;
     att_file_seq: number;
     att_file_nm: string;
-    att_file_path: string;
+    att_file_path: string;      //실제경로 + 파일명
     att_file_size?: number;
     acticle?: Article;
 }

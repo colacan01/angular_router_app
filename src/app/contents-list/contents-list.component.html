@@ -5,14 +5,14 @@
     <div class="container" style="font-size: .7rem">
         
         <section id="board_class">
-            <h3 id="board_class_name" class="my-4">{{articles[0].category?.category_nm}}</h3>
+            <h3 id="board_class_name" class="my-4">{{board_nm}}</h3>
         </section>
 
         <div id="write" class="row">
             <div class="col">
                 <nav style="font-size: 0.85em">
                     <ul class="nav pagination">
-                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']" [queryParams]="{'board_id': board_id, 'page_size':10}">글쓰기</a></li>
+                        <li class="nav-item page-item"><a class="nav-link active" [routerLink]="['/content_write']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': page_index}">글쓰기</a></li>
                         <li class="nav-item page-item"><a class="nav-link active" href="#">찾기옵션</a></li>
                         <!-- <li class="nav-item page-item"><a class="nav-link" href="#">관리2</a></li> -->
                         <li class="nav-item page-item"></li>

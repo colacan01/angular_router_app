@@ -15,7 +15,7 @@
             </section>
             <section id="article_attach" style="margin-bottom: 25px;">
                 <div id="attach_files" class="d-flex" style="margin-bottom: 5px;">
-                    <div style="width: 100%;"><input type="file" id="article_attach_file" class="form-control" onchange="console.log(event.target)"/></div>
+                    <div style="width: 100%;"><input type="file" id="article_attach_file" name="article_attach_file" class="form-control" onchange="console.log(event.target.files[0].name)"/></div>
                     <div class="d-flex justify-content-end align-items-center" style="padding-left: 4px;">
                         <div class="btn-group" role="group">
                             <button id="add_field" class="btn btn-primary text-nowrap" type="button" onclick="addElement('article_attach')">추가</button>
@@ -27,7 +27,7 @@
             <section id="action">
                 <div class="col-3 d-flex justify-content-center mx-auto gap-3">
                     <button class="btn btn-primary"   type="submit" style="width: 90px;" [disabled]="write_form.pristine || write_form.invalid">저장</button>
-                    <button class="btn btn-secondary" type="reset"  style="width: 90px;">취소</button>
+                    <button class="btn btn-secondary" type="reset"  style="width: 90px;" (click)="onCancel()">취소</button>
                 </div>
             </section>
         </form>        

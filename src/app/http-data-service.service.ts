@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Category, Good, Goods_Path, Article, Reply } from './interface_category';
+import { Category, Good, Goods_Path, Article, Reply, Article_Attach_File } from './interface_category';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,7 +9,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HttpDataServiceService {
-  private baseURL = 'http://172.30.1.55:48080/api/';
+  // private baseURL = 'http://172.30.1.55:48080/api/';
+  private baseURL = 'http://172.30.1.112:5153/api/';
   private targetAPI = '';
 
   constructor(
@@ -180,7 +181,8 @@ export class HttpDataServiceService {
   }
 
   postArticle(article: Article): Observable<Article> {
-    this.targetAPI = 'content/postNewArticle';
+    // this.targetAPI = 'content/postNewArticle';
+    this.targetAPI = 'content/postArticle';
     
     const httpHeader = {
       headers: new HttpHeaders({
@@ -229,5 +231,59 @@ export class HttpDataServiceService {
               catchError(this.ErrorHandler)
             );
   }
-}
 
+  uploadFile(BoardId: string, ArticleId: string, FormData: FormData): Observable<Article_Attach_File[]> {
+    // this.targetAPI = 'content/uploadFile?Board_Id=' + BoardId + "&Article_Id=" + ArticleId;
+    this.targetAPI = 'content/uploadFile';
+    
+    // const q_data = new HttpParams()
+    //             .set('board_id',    BoardId)
+    //             .set('article_id',  ArticleId);
+
+    // const httpHeader = new HttpHeaders({
+    //     'Content-Type':  'application/json'
+    //   });
+    
+    // const requestOptions = {
+    //   params: q_data,
+    //   headers: httpHeader
+    // }
+   
+    // return this.http.post<Article_Attach_File[]>(this.baseURL + this.targetAPI, FormData, requestOptions)
+    //         .pipe(
+    //           catchError(this.ErrorHandler)
+    //         );
+
+    // const httpHeader = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'multipart/form-data; boundary=' + ArticleId,
+    //     'enctype':      'multipart/form-data'
+    //   })
+    // };
+
+    const httpHeader = {
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=' + ArticleId,
+        'enctype':      'multipart/form-data'
+      }
+    };
+
+    const param = {
+      params: {
+        'Board_Id': BoardId,
+        'Article_Id': ArticleId
+      }
+    };
+
+    const options = {
+      httpHeader, param
+    }
+
+    console.log('Before Post File: ', this.baseURL + this.targetAPI);
+    console.log('Before Post formData: ', FormData);
+    return this.http.post<Article_Attach_File[]>(this.baseURL + this.targetAPI, FormData, httpHeader)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+  }  
+}
