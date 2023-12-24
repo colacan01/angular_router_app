@@ -9,13 +9,13 @@ import { HttpDataServiceService }               from '../http-data-service.servi
   styleUrls: ['./contents-list.component.css']
 })
 export class ContentsListComponent {
-  articles: Article[] = [];
-  board_id: string | undefined;
-  board_nm: string | undefined;
-  board_page!: number;
+  articles:     Article[] = [];
+  board_id:     string | undefined;
+  board_nm:     string | undefined;
+  board_page!:  number;
 
-  page_size!: string | undefined;
-  page_index!: string | undefined;
+  page_size:    string | undefined;
+  page_index:   string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +46,7 @@ export class ContentsListComponent {
                               .subscribe( a => this.articles = a);
 
           this.board_nm = String(this.articles[0].category?.category_nm);
+          console.log("####board_id: ", this.board_id);
         }
       );
     }

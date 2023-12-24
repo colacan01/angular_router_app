@@ -18,7 +18,7 @@ export class ContentWriteComponent implements OnInit {
   board!:           string;
   page_size!:       string;
   page_index!:      string;
-  _article_body!:   string;
+  article_body!:    string;
   write_form = this.formB.group({  
     article_id:       'temp',  
     board_id:         ['', Validators.required],
@@ -27,9 +27,7 @@ export class ContentWriteComponent implements OnInit {
     article_body:     ['']
   });
 
-  //첨부파일 처리
-  attach_files:     Article_Attach_File[] = [];
-  _attach_files:    any;
+  attach_files:    any;
 
   constructor(
     private router:             Router,
@@ -59,39 +57,42 @@ export class ContentWriteComponent implements OnInit {
   
   onSubmit(): void {
     
-    this._article_body = (<HTMLInputElement>document.getElementById("article_content")).value;
-    this.write_form.controls.article_body.setValue(this._article_body);
+    this.article_body = (<HTMLInputElement>document.getElementById("article_content")).value;
+    this.write_form.controls.article_body.setValue(this.article_body);
 
     var formData = new FormData();    
-    this._attach_files = document.getElementById('article_attach_file');
+    this.attach_files = document.getElementsByName('article_attach_file');
     
-    for (let file of this._attach_files.files) {
-      formData.append("att_files", file, file.name);        
+    // for (let file of this.attach_files.files) {
+    for (let file of this.attach_files) {
+      if (file.files.length != 0) {
+        formData.append("att_files", file.files[0], file.files[0].name);        
+      }
     }
 
     this.httpDataService.postArticle(this.write_form.value as Article).subscribe( a => {
-      if(this._attach_files.files.length > 0) {
+      if(this.attach_files.length > 0) {
         this.httpDataService.uploadFile(String(a.board_id), String(a.article_id), formData ).subscribe();
       }
 
-      const q_data = { 
+      const queryParams = { 
         board_id:   String(a.board_id),
         page_size:  this.page_size,
         page_index: '1'
       };
 
-      this.router.navigate(['contents_list'], { queryParams: q_data });     
+      this.router.navigate(['contents_list'], { queryParams: queryParams });     
     });
   }
 
   onCancel(): void {
-    const q_data = { 
+    const queryParams = { 
       board_id:   this.board, 
       page_size:  this.page_size,
       page_index: this.page_index
     };
 
-    this.router.navigate(['contents_list'], { queryParams: q_data });   
+    this.router.navigate(['contents_list'], { queryParams: queryParams });   
   }
 }
 
