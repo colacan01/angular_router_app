@@ -23,6 +23,7 @@ import { ContentWriteComponent } from './contents-list/content-write/content-wri
 import { ContentBoxComponent } from './contents-list/content-box/content-box.component';
 import { ReplyViewComponent } from './contents-list/content-view/reply-view/reply-view.component';
 import { GoodInfoComponent } from './goods-list/good-detail/good-info/good-info.component';
+import { AttchViewComponent } from './contents-list/content-view/attch-view/attch-view.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GoodInfoComponent } from './goods-list/good-detail/good-info/good-info.
     ContentWriteComponent,
     ContentBoxComponent,
     ReplyViewComponent,
-    GoodInfoComponent
+    GoodInfoComponent,
+    AttchViewComponent
   ],
   imports: [
     BrowserModule,

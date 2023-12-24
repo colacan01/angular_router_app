@@ -23,11 +23,14 @@
             </div>
             <hr style="margin-top: 15px;" />
         </section>
+        <section  id="article_att_files" *ngIf="article?.attach_files">
+            <app-attch-view [attach_files]="article?.attach_files"></app-attch-view>
+        </section>
         <section id="article_nav">
             <div *ngIf="lead_article">
                 <i class="fa fa-chevron-up" style="margin-right: 5px;font-size: 0.7rem;color: var(--bs-gray-700);"></i>
                 <span id="next_article" style="font-size: .6rem;color: var(--bs-gray-700);margin-right: 17px;">다음글</span>
-                <span id="next_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view/'+ lead_article.board_id +'/', lead_article.article_id]">{{lead_article.article_subject}}</a></span>
+                <span id="next_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view']" [queryParams]="{'board_id': lead_article.board_id, 'page_size': page_size, 'page_index': page_index, 'article_id': lead_article.article_id}">{{lead_article.article_subject}}</a></span>
                 <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lead_article.article_reply_count}}</span>
                 <span id="next_article_write_date" class="float-end" style="font-size: .7rem;line-height: 24px;">{{lead_article.article_write_datetime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
             </div>
@@ -37,7 +40,7 @@
             <div *ngIf="lag_article">
                 <i class="fa fa-chevron-down" style="margin-right: 5px;font-size: 0.7rem;color: var(--bs-gray-700);"></i>
                 <span id="prev_article" style="font-size: .6rem;color: var(--bs-gray-700);margin-right: 17px;">이전글</span>
-                <span id="prev_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view/'+ lag_article.board_id +'/', lag_article.article_id]">{{lag_article.article_subject}}</a></span>
+                <span id="prev_article_subject" style="font-size: .8rem;"><a [routerLink]="['/content_view']" [queryParams]="{'board_id': lag_article.board_id, 'page_size': page_size, 'page_index': page_index, 'article_id': lag_article.article_id}">{{lag_article.article_subject}}</a></span>
                 <span class="badge bg-primary ms-2" style="font-size: .5rem;">{{lag_article.article_reply_count}}</span>
                 <span id="prev_article_write_date" class="float-end" style="font-size: .7rem;line-height: 24px;">{{lag_article.article_write_datetime | date : 'yyyy-MM-dd HH:mm:ss'}}</span>
             </div>
@@ -56,7 +59,7 @@
                 <textarea id="reply_body" class="form-control" style="width: 100%;height: 80px;" placeholder="댓글 내용을 입력하세요" formControlName="reply_body"></textarea>
                 <div class="col-3 d-flex justify-content-center mx-auto gap-3" style="margin-top: 12px;">
                     <button class="btn btn-primary"   type="submit" style="width: 90px;" [disabled]="reply_form.pristine || reply_form.invalid">저장</button>
-                    <button class="btn btn-secondary" type="reset"  style="width: 90px;">취소</button>
+                    <button class="btn btn-secondary" type="reset"  style="width: 90px;" (click)="onCancel()">취소</button>
                 </div>
             </form>
         </section>

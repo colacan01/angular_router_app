@@ -32,9 +32,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let article of articles">
+                    <tr *ngFor="let article of articles; let idx = index">
                         <td class="text-center">{{article?.user?.user_nm}}</td>
-                        <td><a [routerLink]="['/content_view/'+ board_id +'/', article.article_id]">{{article.article_subject}}</a>
+                        <td><a [routerLink]="['/content_view']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': page_index, 'article_id': article.article_id}">{{article.article_subject}}</a>
                             <span class="badge bg-primary ms-2" style="font-size: .5rem;" *ngIf="article?.article_reply_count">{{article?.article_reply_count}}</span>
                         </td>
                         <td class="text-center">{{article?.article_read_count}}</td>
@@ -51,15 +51,6 @@
                         <li class="nav-item page-item" *ngFor="let in of counter(board_page); let idx = index">
                             <a class="nav-link" [routerLink]="['/contents_list']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': idx + 1}">{{idx + 1}}</a>
                         </li>
-                        <!-- 
-                        <li class="nav-item page-item"><a class="nav-link active" href="#">처음</a></li>
-                        <li class="nav-item page-item"><a class="nav-link active" href="#">이전</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">1</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">2</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">3</a></li> 
-                        <li class="nav-item page-item"><a class="nav-link" href="#">다음</a></li>
-                        <li class="nav-item page-item"><a class="nav-link" href="#">마지막</a></li> 
-                        -->
                     </ul>
                 </nav>
             </div>

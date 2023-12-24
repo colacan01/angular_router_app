@@ -12,13 +12,13 @@ import { HttpDataServiceService }               from '../../http-data-service.se
 export class ContentViewComponent {
   board_id:         string;
   article_id:       string;
+  page_size:        string | any;
+  page_index:       number | any;
   article?:         Article;
   lead_article?:    Article;
   lag_article?:     Article;
   user_id:          string = '';
-  postReturnValue?: string;
-  // reply?:            Reply;
-
+  
   reply_form = this.formB.group({  
     reply_id: 'temp',  
     article_id: '',  
@@ -41,10 +41,20 @@ export class ContentViewComponent {
       this.user_id = 'dev';
 
       /** 아래 코드를 넣어야 같은 화면에서 리프레쉬 됨 */
-      this.route.params.subscribe(
-        params => {
-          this.board_id    = String(params['board_id']);          
-          this.article_id  = String(params['artice_id']);
+      this.route.queryParams.subscribe(
+        parameters => {
+          this.board_id    = String(parameters['board_id']);          
+          this.article_id  = String(parameters['article_id']);
+          this.page_size   = String(parameters['page_size']);
+          this.page_index  = String(parameters['page_index']);
+
+          if(this.page_size == 'undefined') {
+            this.page_size = '10';
+          }
+
+          if(this.page_index == 'undefined') {
+            this.page_index = '1';
+          }
           
           this.httpDataService.postReadCount(this.article_id, this.user_id).subscribe();
 
@@ -68,4 +78,15 @@ export class ContentViewComponent {
         }
       );
   }
+
+  onCancel(): void {
+    const queryParams = { 
+      board_id:   this.board_id, 
+      page_size:  this.page_size,
+      page_index: this.page_index
+    };
+
+    this.router.navigate(['contents_list'], { queryParams: queryParams });   
+  }
+
 }

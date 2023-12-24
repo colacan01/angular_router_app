@@ -1,4 +1,4 @@
-<a [routerLink]="['/content_view', article.board_id, article.article_id]">
+<a [routerLink]="['/content_view']" [queryParams]="{'board_id': article.board_id, 'page_size': 10, 'page_index': 1, 'article_id': article.article_id}">
     <div class="card mb-4" style="border-style: none;">
         <div class="card-body" style="padding:0px;">
             <div class="d-flex justify-content-between">

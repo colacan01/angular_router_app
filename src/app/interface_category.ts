@@ -119,7 +119,7 @@ export interface Article {
     category?: Category;
     replies?: Reply[];
     user?: User;
-    article_attach_files?: Article_Attach_File[];
+    attach_files?: Article_Attach_File[];
 }
 
 export interface Reply {
