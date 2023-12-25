@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 백서비스 작업로그.ods
 src/assets/images/
+.vscode/launch.json
