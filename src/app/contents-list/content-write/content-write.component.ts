@@ -3,7 +3,6 @@ import { ActivatedRoute, Route, Router }                from '@angular/router';
 import { FormBuilder, Validators }                      from '@angular/forms';
 import { Article, Article_Attach_File, Category }       from '../../interface_category';
 import { HttpDataServiceService }                       from '../../http-data-service.service';
-import { HttpHeaders, HttpParams }                      from '@angular/common/http';
 
 declare var startEditor:any;
 
@@ -13,12 +12,14 @@ declare var startEditor:any;
   styleUrls: ['./content-write.component.css']
 })
 export class ContentWriteComponent implements OnInit {
-  Boards:           Category[] = [];
-  article:          Article | any;
-  board!:           string;
-  page_size!:       string;
-  page_index!:      string;
-  article_body!:    string;
+  Boards        : Category[] = [];
+  article       : Article | any;
+  board_id      : string  | any;
+  page_size     : string  | any;
+  page_index    : string  | any;
+  article_body  : string  | any;
+  attach_files  : any;
+
   write_form = this.formB.group({  
     article_id:       'temp',  
     board_id:         ['', Validators.required],
@@ -26,8 +27,6 @@ export class ContentWriteComponent implements OnInit {
     article_subject:  ['', Validators.required],
     article_body:     ['']
   });
-
-  attach_files:    any;
 
   constructor(
     private router:             Router,
@@ -37,7 +36,7 @@ export class ContentWriteComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe(
       parameters => {
-        this.board      = String(parameters['board_id']);
+        this.board_id   = String(parameters['board_id']);
         this.page_size  = String(parameters['page_size']);
         this.page_index = String(parameters['page_index']);
 
@@ -49,7 +48,7 @@ export class ContentWriteComponent implements OnInit {
   ngOnInit() {
     //select 박스 기본값: 게시판 경로
     this.write_form.patchValue({
-      board_id: this.board
+      board_id: this.board_id
     });
 
     startEditor();
@@ -63,7 +62,6 @@ export class ContentWriteComponent implements OnInit {
     var formData = new FormData();    
     this.attach_files = document.getElementsByName('article_attach_file');
     
-    // for (let file of this.attach_files.files) {
     for (let file of this.attach_files) {
       if (file.files.length != 0) {
         formData.append("att_files", file.files[0], file.files[0].name);        
@@ -76,9 +74,9 @@ export class ContentWriteComponent implements OnInit {
       }
 
       const queryParams = { 
-        board_id:   String(a.board_id),
-        page_size:  this.page_size,
-        page_index: '1'
+        board_id    : String(a.board_id),
+        page_size   : this.page_size,
+        page_index  : '1'
       };
 
       this.router.navigate(['contents_list'], { queryParams: queryParams });     
@@ -87,7 +85,7 @@ export class ContentWriteComponent implements OnInit {
 
   onCancel(): void {
     const queryParams = { 
-      board_id:   this.board, 
+      board_id:   this.board_id, 
       page_size:  this.page_size,
       page_index: this.page_index
     };
@@ -95,4 +93,3 @@ export class ContentWriteComponent implements OnInit {
     this.router.navigate(['contents_list'], { queryParams: queryParams });   
   }
 }
-

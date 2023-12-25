@@ -24,6 +24,7 @@ import { ContentBoxComponent } from './contents-list/content-box/content-box.com
 import { ReplyViewComponent } from './contents-list/content-view/reply-view/reply-view.component';
 import { GoodInfoComponent } from './goods-list/good-detail/good-info/good-info.component';
 import { AttchViewComponent } from './contents-list/content-view/attch-view/attch-view.component';
+import { ContentEditComponent } from './contents-list/content-edit/content-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AttchViewComponent } from './contents-list/content-view/attch-view/attc
     ContentBoxComponent,
     ReplyViewComponent,
     GoodInfoComponent,
-    AttchViewComponent
+    AttchViewComponent,
+    ContentEditComponent
   ],
   imports: [
     BrowserModule,

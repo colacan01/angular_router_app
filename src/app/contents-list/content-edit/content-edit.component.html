@@ -1,0 +1,38 @@
+<main>
+    <div class="container">
+        <form [formGroup]="edit_form" (ngSubmit)="onSubmit()" method="post" enctype="multipart/form-data">
+            <section id="wirte_header">
+                <h3 id="wirte_header_name" class="my-4">게시물 수정</h3>
+            </section>
+            <section id="article_header" style="margin-bottom: 15px;">
+                <select class="form-select w-25" style="margin-bottom: 7px;" formControlName="board_id">
+                    <option *ngFor="let board of Boards" value="{{board.category_id}}">{{board.category_nm}}</option>
+                </select>
+                <input id="article_subject" class="form-control" type="text" style="width: 100%;" formControlName="article_subject"/>
+            </section>
+            <section id="article_body" style="margin-bottom: 15px;">
+                <textarea id="article_content" class="form-control tr-editor" style="width: 100%;height: 300px;"  formControlName="article_body"></textarea>
+            </section>
+            <section  id="article_att_files" *ngIf="article?.attach_files">
+                <app-attch-view [attach_files]="article?.attach_files"></app-attch-view>
+            </section>
+            <section id="article_attach" style="margin-bottom: 25px;">
+                <div id="attach_files" class="d-flex" style="margin-bottom: 5px;">
+                    <div style="width: 100%;"><input type="file" id="article_attach_file" name="article_attach_file" class="form-control" onchange="console.log(event.target.files)"/></div>
+                    <div class="d-flex justify-content-end align-items-center" style="padding-left: 4px;">
+                        <div class="btn-group" role="group">
+                            <button id="add_field" class="btn btn-primary text-nowrap" type="button" onclick="addElement('article_attach')">추가</button>
+                            <button id="rmv_field" class="btn btn-danger text-nowrap"  type="button" onclick="removeElement('article_attach', this)">삭제</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="action">
+                <div class="col-3 d-flex justify-content-center mx-auto gap-3">
+                    <button class="btn btn-primary"   type="submit" style="width: 90px;" [disabled]="edit_form.invalid">저장</button>
+                    <button class="btn btn-secondary" type="reset"  style="width: 90px;" (click)="onCancel()">취소</button>
+                </div>
+            </section>
+        </form>        
+    </div>
+</main>

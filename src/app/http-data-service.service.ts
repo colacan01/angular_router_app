@@ -143,6 +143,9 @@ export class HttpDataServiceService {
 
   getArticle(ArticleId: string): Observable<Article> {
     this.targetAPI = 'content/getArticle?Article_Id=' + ArticleId ;
+
+    console.log("요청 url: ", this.baseURL + this.targetAPI);
+
     return this.http.get<Article>(this.baseURL + this.targetAPI)
             .pipe(
               catchError(this.ErrorHandler)
@@ -260,4 +263,20 @@ export class HttpDataServiceService {
                       catchError(this.ErrorHandler)
                     );
   }  
+
+  putArticle(article: Article): Observable<Article> {
+    this.targetAPI = 'content/putArticle';
+
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    
+    return this.http.put<Article>(this.baseURL + this.targetAPI, article, httpHeader)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+
+  }
 }

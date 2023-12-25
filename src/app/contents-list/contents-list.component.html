@@ -29,6 +29,7 @@
                         <th class="text-center" style="background: #e4e4e4; min-width:60px;">조회건수</th>
                         <th class="text-center" style="background: #e4e4e4; min-width:140px;">작성일</th>
                         <th class="text-center" style="background: #e4e4e4; min-width:60px;">추천건수</th>
+                        <th class="text-center" style="background: #e4e4e4; min-width:60px;">수정</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +39,9 @@
                             <span class="badge bg-primary ms-2" style="font-size: .5rem;" *ngIf="article?.article_reply_count">{{article?.article_reply_count}}</span>
                         </td>
                         <td class="text-center">{{article?.article_read_count}}</td>
-                        <td class="text-center">{{article.article_write_datetime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td class="text-center">{{article.article_update_datetime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
                         <td class="text-center">{{article?.article_recommend_count}}</td>
+                        <td class="text-center"><a [routerLink]="['/content_edit']" [queryParams]="{'board_id': board_id, 'page_size':10, 'page_index': page_index, 'article_id': article.article_id}">수정</a></td>
                     </tr>
                 </tbody>
             </table>

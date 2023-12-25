@@ -1,7 +1,7 @@
 import { Component }                            from '@angular/core';
 import { ActivatedRoute, Route, Router }        from '@angular/router';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Article, Reply }                              from '../../interface_category';
+import { Article, Reply }                       from '../../interface_category';
 import { HttpDataServiceService }               from '../../http-data-service.service';
 
 @Component({
@@ -65,7 +65,7 @@ export class ContentViewComponent {
       );
     }
 
-  ngOnInit() {}    
+  // ngOnInit() {}    
 
   onSubmit() {
     //기본키 셋팅
