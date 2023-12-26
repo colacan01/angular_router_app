@@ -279,4 +279,32 @@ export class HttpDataServiceService {
             );
 
   }
+
+  delAttFile(aaf: Article_Attach_File): Observable<unknown> | any {
+    this.targetAPI = 'content/delAttFile?Attach_File_Id=' + aaf.attach_file_id;
+
+    const httpHeader = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    // const params = {
+    //     'Attach_File_Id'  : aaf.attach_file_id
+    // };
+    
+    // const body = aaf;
+    
+    // const options = {
+    //   httpHeader, params, body    
+    // }
+    
+    // console.log("delete 호출 시작: ", options);
+    console.log("delete url: ", this.baseURL + this.targetAPI);
+
+    return this.http.delete(this.baseURL + this.targetAPI, httpHeader)    
+            .pipe(
+              catchError(this.ErrorHandler)
+            );
+  }
 }

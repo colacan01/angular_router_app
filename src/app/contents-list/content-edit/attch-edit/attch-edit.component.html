@@ -1,0 +1,5 @@
+<div>
+    <ul class="att-file-ul">
+        <li class="att-file-li" *ngFor="let file of attach_files" (click)="deleteAttach(file); deleted_attach_file.emit(file)">{{file.attach_file_nm}} <i class="bi bi-trash" style="margin-left: 5px;"></i></li>
+    </ul>
+</div>

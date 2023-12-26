@@ -1,7 +1,7 @@
 import { Component, OnInit }                            from '@angular/core';
 import { ActivatedRoute, Route, Router }                from '@angular/router';
 import { FormBuilder, Validators }                      from '@angular/forms';
-import { Article, Category }                            from '../../interface_category';
+import { Article, Article_Attach_File, Category }                            from '../../interface_category';
 import { HttpDataServiceService }                       from '../../http-data-service.service';
 
 declare var startEditor: any;
@@ -17,7 +17,7 @@ export class ContentEditComponent implements OnInit {
   page_index      : string      | any;
   page_size       : string      | any;
   article_id      : string      | any;
-  article         : Article     | undefined;
+  article!        : Article;
   article_body    : string      | any;
   attach_files    : any;
 
@@ -94,9 +94,7 @@ export class ContentEditComponent implements OnInit {
         page_size   : this.page_size,
         page_index  : this.page_index,
       };
-
-      console.log("queryParams: ", queryParams);
-
+      // console.log("queryParams: ", queryParams);
       this.router.navigate(['content_view'], { queryParams: queryParams });     
     });
   }
@@ -105,10 +103,13 @@ export class ContentEditComponent implements OnInit {
     const queryParams = { 
       board_id    : this.board_id, 
       page_size   : this.page_size,
-      page_index  : this.page_index,
-      
+      page_index  : this.page_index      
     };
 
     this.router.navigate(['contents_list'], { queryParams: queryParams });   
+  }
+
+  deleteAttachFile(deletedFile: Article_Attach_File) {    
+    this.article.attach_files = this.article.attach_files?.filter(a => a != deletedFile); 
   }
 }
