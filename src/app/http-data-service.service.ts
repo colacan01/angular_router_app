@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 
-import { Category, Good, Goods_Path, Article, Reply, Article_Attach_File } from './interface_category';
+import { Category, Good, Goods_Path, Article, Reply, Article_Attach_File, LoggedUser, LoginUser } from './interface_category';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataServiceService {
-  private baseURL = 'http://172.30.1.55:48080/api/';
-  // private baseURL = 'http://172.30.1.112:5153/api/';
+  private baseURL = environment.baseURL;
   private targetAPI = '';
 
   constructor(
     private http: HttpClient    
   ) 
   {}
-  
+
+
   private ErrorHandler(error: HttpErrorResponse) {
     if (error.status === 0) 
     {
@@ -29,6 +30,21 @@ export class HttpDataServiceService {
     }
     return throwError(() => new Error('나쁜일 일어났음. 다시 시도하세요.'));
   }
+
+  // putLogin(loginUser: LoginUser): Observable<LoggedUser> {
+  //   this.targetAPI = 'account/putlogin';
+
+  //   const httpHeader = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   };
+
+  //   return this.http.put<LoggedUser>(this.baseURL + this.targetAPI, loginUser, httpHeader)
+  //           .pipe(
+  //             catchError(this.ErrorHandler)
+  //           );          
+  // }
 
   getCategoryAll(): Observable<Category[]>  {
     this.targetAPI = 'Base/getCategoryAll';

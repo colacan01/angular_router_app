@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+
+  goBack() {
+    console.log("돌아가기 누름");
+  }
 }

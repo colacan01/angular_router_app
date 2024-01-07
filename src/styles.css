@@ -29,3 +29,7 @@ footer .container {
 a:link {
   text-decoration: none;
 }
+
+input, select {
+  font-size: 0.7rem;
+}

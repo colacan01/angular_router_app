@@ -159,3 +159,20 @@ export interface User {
     user_mobile_no: string;
     acticles?: Article[];
 }
+
+export interface LoggedUser { 
+    result_code       : string; 
+    result_message    : string;  
+    user_id: string; 
+    user_name: string; 
+    user_class: string; 
+    user_login_success_datetime: Date; 
+    token: string;
+}
+
+export interface LoginUser { 
+    user_id: string; 
+    user_password: string; 
+    user_agent: string; 
+    remote_address: string; 
+}
