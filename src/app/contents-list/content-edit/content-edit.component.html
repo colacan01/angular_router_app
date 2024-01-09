@@ -14,7 +14,7 @@
                 <textarea id="article_content" class="form-control tr-editor" style="width: 100%;height: 300px;"  formControlName="article_body"></textarea>
             </section>
             <section  id="article_att_files" *ngIf="article?.attach_files">
-                <app-attch-edit [attach_files]="article?.attach_files" (deleted_attach_file)="deleteAttachFile($event)"></app-attch-edit>
+                <app-attch-edit [attach_files]="article.attach_files" (deleted_attach_file)="deleteAttachFile($event)"></app-attch-edit>
             </section>
             <section id="article_attach" style="margin-bottom: 25px;">
                 <div id="attach_files" class="d-flex" style="margin-bottom: 5px;">

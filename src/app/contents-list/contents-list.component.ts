@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute }                       from '@angular/router';
+import { Component }                          from '@angular/core';
+import { ActivatedRoute }                     from '@angular/router';
 import { Article }                            from '../interface_category';
-import { HttpDataServiceService }               from '../http-data-service.service';
+import { HttpDataServiceService }             from '../http-data-service.service';
+import { Location }                           from '@angular/common';
 
 @Component({
-  selector: 'app-contents-list',
-  templateUrl: './contents-list.component.html',
-  styleUrls: ['./contents-list.component.css']
+  selector      : 'app-contents-list',
+  templateUrl   : './contents-list.component.html',
+  styleUrls     : ['./contents-list.component.css']
 })
 export class ContentsListComponent {
   articles:     Article[] = [];
@@ -17,9 +18,12 @@ export class ContentsListComponent {
   page_size:    string | undefined;
   page_index:   string | undefined;
 
+  backURL:      string = '';
+
   constructor(
-    private route: ActivatedRoute,
-    private httpDataService: HttpDataServiceService
+    private route                 : ActivatedRoute,
+    private httpDataService       : HttpDataServiceService,
+    private location              : Location
     ) 
     { 
       this.board_id = '';
@@ -41,16 +45,15 @@ export class ContentsListComponent {
           /** 화면의 네비게이션 표시용 */
           this.httpDataService.getBoardPages(this.board_id, 10)
                               .subscribe( a => this.board_page  = a);  
-
           this.httpDataService.getArticles(this.board_id, this.page_size, this.page_index)
                               .subscribe( a => this.articles = a);
-
           this.board_nm = String(this.articles[0].category?.category_nm);
-          console.log("####board_id: ", this.board_id);
+          //현재 url 조회
+          this.backURL = this.location.path();
         }
       );
     }
-  
+
     counter(i: number ) {
       return new Array(i);
     }

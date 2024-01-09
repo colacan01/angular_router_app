@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
   ipAddress     : string = '';
   loginUser     : LoginUser | any;
   loggedUser    : LoggedUser | any;
+                            
+  backURL       : string = '';
+
 
   constructor(
     private router            : Router,
@@ -42,6 +45,11 @@ export class LoginComponent implements OnInit {
         user_agent     : ' ',
         remote_address : ' '  
       }
+
+      this.route.queryParams.subscribe(
+        parameters => {
+          this.backURL   = String(parameters['backUrl']);
+        });
     }
 
   ngOnInit() {
@@ -73,20 +81,23 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("jwt", token);        
       }
       else if (a.result_code == "-1") {
-        //등록된 사용자가 아닙니다.
         window.alert("등록된 사용자가 아닙니다.");
-        //clear input
-        this.loginForm.value.user_id = "";
-        this.loginForm.value.user_password = "";
+        (<HTMLInputElement>document.getElementById('user_id')).value = '';
+        (<HTMLInputElement>document.getElementById('user_password')).value = '';
       }
       else if (a.result_code == "-2") {
-        //비밀번호가 맞지 않습니다
         window.alert("비밀번호가 맞지 않습니다.");
-        this.loginForm.value.user_password = "";
+        (<HTMLInputElement>document.getElementById('user_password')).value = '';
       }
       else {
+        this.router.navigate(["/"]);
       }
 
+      if(this.backURL == 'undefined') {
+        this.backURL = '/';
+      }
+
+      this.router.navigateByUrl(this.backURL);
     });
 
     

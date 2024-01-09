@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute }                       from '@angular/router';
 import { Category, Good, Article } from '../interface_category';
 import { HttpDataServiceService } from '../http-data-service.service';
+import { Location }                             from '@angular/common';
 
 @Component({
   selector: 'app-main-intro',
@@ -9,15 +10,18 @@ import { HttpDataServiceService } from '../http-data-service.service';
   styleUrls: ['./main-intro.component.css']
 })
 export class MainIntroComponent {
-  categoryId: string;  
-  category?:  Category;
-  Goods:      Good[] = [];   /** 상품 리스트 변수 */
-  PopGoods:   Good[] = [];   /** 상품 리스트 변수 */
-  NewsArticle:Article[] =[];
+  categoryId    : string;  
+  category?     : Category;
+  Goods         : Good[] = [];   /** 상품 리스트 변수 */
+  PopGoods      : Good[] = [];   /** 상품 리스트 변수 */
+  NewsArticle   : Article[] =[];
+
+  backURL       : string = '';
 
   constructor(
-    private route: ActivatedRoute,
-    private httpDataService: HttpDataServiceService
+    private route             : ActivatedRoute,
+    private httpDataService   : HttpDataServiceService,
+    private location          : Location
     ) 
     { 
       this.categoryId = '';
@@ -33,6 +37,8 @@ export class MainIntroComponent {
           console.log('values: ', this.categoryId);        
         }
       );
+
+      this.backURL = this.location.path();
     }
 
 }

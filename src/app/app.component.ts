@@ -8,5 +8,5 @@ import { FooterMapComponent } from './footer-map/footer-map.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = '내비게이션(라우터사용)';
+
 }

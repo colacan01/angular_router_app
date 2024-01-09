@@ -12,6 +12,7 @@ import { UserComponent }            from './user/user.component';
 import { LoginComponent }           from './user/login/login.component';
 import { RegisterComponent }        from './user/register/register.component';
 import { CartComponent }            from './user/cart/cart.component';
+import { AuthGuard }                from './auth.guard';
 
 const routes: Routes = [
   {path: '',                component: MainIntroComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
    children: [
     { path: 'login',          component: LoginComponent },    
     // { path: 'cart?user_id=:user_id',  component: CartComponent },            /** 사용자 ID를 파라매터로 넘겨줘야 함 */
-    { path: 'cart/:user_id',  component: CartComponent },                       /** 사용자 ID를 파라매터로 넘겨줘야 함 */
+    { path: 'cart/:user_id',  component: CartComponent, canActivate: [AuthGuard] },                       /** 사용자 ID를 파라매터로 넘겨줘야 함 */
    ],
   },
 ];
