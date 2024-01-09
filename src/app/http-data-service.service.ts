@@ -31,21 +31,6 @@ export class HttpDataServiceService {
     return throwError(() => new Error('나쁜일 일어났음. 다시 시도하세요.'));
   }
 
-  // putLogin(loginUser: LoginUser): Observable<LoggedUser> {
-  //   this.targetAPI = 'account/putlogin';
-
-  //   const httpHeader = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/json'
-  //     })
-  //   };
-
-  //   return this.http.put<LoggedUser>(this.baseURL + this.targetAPI, loginUser, httpHeader)
-  //           .pipe(
-  //             catchError(this.ErrorHandler)
-  //           );          
-  // }
-
   getCategoryAll(): Observable<Category[]>  {
     this.targetAPI = 'Base/getCategoryAll';
     
@@ -199,8 +184,16 @@ export class HttpDataServiceService {
             );      
   }
 
+  //TODO: 게시판 목록 조회 서비스 개발 필요
+  getBoardName(CategoryId: string): Observable<Category> {
+    this.targetAPI = 'content/getBoardName?CategoryId=' + CategoryId;
+    return this.http.get<Category>(this.baseURL + this.targetAPI)
+            .pipe(
+              catchError(this.ErrorHandler)
+            );      
+  }
+
   postArticle(article: Article): Observable<Article> {
-    // this.targetAPI = 'content/postNewArticle';
     this.targetAPI = 'content/postArticle';
     
     const httpHeader = {

@@ -3,6 +3,7 @@ import { ActivatedRoute }                     from '@angular/router';
 import { Article }                            from '../interface_category';
 import { HttpDataServiceService }             from '../http-data-service.service';
 import { Location }                           from '@angular/common';
+import { NaviService }                        from '../navi.service';
 
 @Component({
   selector      : 'app-contents-list',
@@ -10,24 +11,23 @@ import { Location }                           from '@angular/common';
   styleUrls     : ['./contents-list.component.css']
 })
 export class ContentsListComponent {
-  articles:     Article[] = [];
-  board_id:     string | undefined;
-  board_nm:     string | undefined;
-  board_page!:  number;
+  articles      : Article[] = [];
+  board_id      : string | undefined;
+  board_nm      : string | undefined;
+  board_page!   : number;
 
-  page_size:    string | undefined;
-  page_index:   string | undefined;
+  page_size     : string | undefined;
+  page_index    : string | undefined;
 
-  backURL:      string = '';
+  backURL       : string = '';
 
   constructor(
     private route                 : ActivatedRoute,
     private httpDataService       : HttpDataServiceService,
-    private location              : Location
+    private location              : Location,
+    private naviService           : NaviService
     ) 
     { 
-      this.board_id = '';
-
       this.route.queryParams.subscribe(
         parameters => {
           this.board_id   = String(parameters['board_id']);
@@ -47,9 +47,12 @@ export class ContentsListComponent {
                               .subscribe( a => this.board_page  = a);  
           this.httpDataService.getArticles(this.board_id, this.page_size, this.page_index)
                               .subscribe( a => this.articles = a);
-          this.board_nm = String(this.articles[0].category?.category_nm);
-          //현재 url 조회
-          this.backURL = this.location.path();
+          this.httpDataService.getBoardName(this.board_id)
+                              .subscribe( a => {
+                                this.board_nm = a.category_nm;
+                              });
+          
+          this.naviService.setBackUrl(this.location.path());
         }
       );
     }

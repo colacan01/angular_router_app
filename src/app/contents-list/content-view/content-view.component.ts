@@ -4,6 +4,7 @@ import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Article, Reply }                       from '../../interface_category';
 import { HttpDataServiceService }               from '../../http-data-service.service';
 import { Location }                             from '@angular/common';
+import { NaviService }                          from '../../navi.service';
 
 @Component({
   selector: 'app-content-view',
@@ -37,7 +38,8 @@ export class ContentViewComponent {
     private route                 : ActivatedRoute,
     private httpDataService       : HttpDataServiceService,
     private formB                 : FormBuilder,
-    private location              : Location
+    private location              : Location,
+    private naviService           : NaviService
     ) 
     { 
       this.board_id = '';
@@ -65,13 +67,11 @@ export class ContentViewComponent {
           this.httpDataService.getArticle(this.article_id).subscribe( a => this.article = a);     
           this.httpDataService.getLeadArticle(this.board_id, this.article_id).subscribe( a => this.lead_article = a);     
           this.httpDataService.getLagArticle(this.board_id, this.article_id).subscribe( a => this.lag_article = a);               
-
-          this.backURL = this.location.path();
+          
+          this.naviService.setBackUrl(this.location.path());
         }
       );
     }
-
-  // ngOnInit() {}    
 
   onSubmit() {
     //기본키 셋팅

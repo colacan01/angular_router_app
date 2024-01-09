@@ -1,22 +1,28 @@
 import { Component, OnInit }                  from '@angular/core';
 import { ActivatedRoute }                     from '@angular/router';
-import { Good, Goods_Path }                               from '../../interface_category';
+import { Good, Goods_Path }                   from '../../interface_category';
 import { HttpDataServiceService }             from '../../http-data-service.service';
+import { Location }                           from '@angular/common';
+import { NaviService }                        from '../../navi.service';
 
 @Component({
-  selector: 'app-good-detail',
-  templateUrl: './good-detail.component.html',
-  styleUrls: ['./good-detail.component.css']
+  selector    : 'app-good-detail',
+  templateUrl : './good-detail.component.html',
+  styleUrls   : ['./good-detail.component.css']
 })
 export class GoodDetailComponent implements OnInit {
   category_id:  string;
   good_id:      string;
   good?:        Good;
   good_path?:   Goods_Path;
+
+  backURL:      string = '';
   
   constructor(
-    private route: ActivatedRoute,
-    private httpDataService: HttpDataServiceService
+    private route                 : ActivatedRoute,
+    private httpDataService       : HttpDataServiceService,
+    private location              : Location,
+    private naviService           : NaviService
     ) 
     { 
       this.category_id  = '';
@@ -29,7 +35,8 @@ export class GoodDetailComponent implements OnInit {
           this.good_id        = String(params['id']);
           this.httpDataService.getGood(this.good_id).subscribe(a => this.good = a);
           this.httpDataService.getGoodsPath('Good', this.good_id).subscribe(a => this.good_path = a);
-          console.log('values: ', this.good_id);        
+
+          this.naviService.setBackUrl(this.location.path());       
         }
       );
     }

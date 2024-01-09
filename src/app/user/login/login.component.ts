@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
       this.route.queryParams.subscribe(
         parameters => {
-          this.backURL   = String(parameters['backUrl']);
+          this.backURL   = String(parameters['backURL']);
         });
     }
 
